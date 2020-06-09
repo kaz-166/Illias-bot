@@ -14,9 +14,9 @@ module WeatherHelper
 		
 		# Web APIを使用して天候情報を取得するメソッド
 		def callback_open_weather_map
-			API_KEY = 'd3108a91a765e95d43c83a97e78125cd'
-			BASE_URL  "http://api.openweathermap.org/data/2.5/forecast"
-			response = open(BASE_URL + "?q=Akashi-shi,jp&APPID=#{API_KEY}")
-			puts JSON.pretty_generate(JSON.parse(response.read))
+			# API_KEY = 'd3108a91a765e95d43c83a97e78125cd'
+			# BASE_URL  "http://api.openweathermap.org/data/2.5/forecast"
+			# response = open(BASE_URL + "?q=Akashi-shi,jp&APPID=#{API_KEY}")
+			# puts JSON.pretty_generate(JSON.parse(response.read))
 		end
 end
