@@ -56,9 +56,14 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: ilias_bot_test
-
+  adapter: postgresql
+  host: localhost
+  encoding: utf8
+  database: ilias_bot_db_test
+  username: <%= Settings.pg.user_name %>
+  password: <%= Settings.pg.password %>
+  pool: 5
+  timeout: 5000
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
