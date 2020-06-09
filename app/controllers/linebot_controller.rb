@@ -23,10 +23,7 @@ class LinebotController < ApplicationController
 
         events.each{ |event|
             # event.message['text']でLINEアプリケーションから送られてきた文書を取得する
-            if event.message['text'].include?("おはよう")
-                response = 'おはようございます。'
-            end
-
+            response = parse_command
             case event
             when Line::Bot::Event::Message
               case event.type
@@ -41,4 +38,13 @@ class LinebotController < ApplicationController
         }
         head :ok
     end
+
+    private
+      def parse_command
+        if event.message['text'].include?("おはよう")
+          'おはようございます。'
+        elsif event.message['text'].include?("天気")
+          exec_command_weather
+        end
+      end
 end

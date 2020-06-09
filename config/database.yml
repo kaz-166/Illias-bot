@@ -21,9 +21,15 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-development:
-  <<: *default
-  database: ilias_bot_development
+test:
+  adapter: postgresql
+  host: localhost
+  encoding: utf8
+  database: ilias_bot_db_development
+  username: <%= Settings.pg.user_name %>
+  password: <%= Settings.pg.password %>
+  pool: 5
+  timeout: 5000
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
