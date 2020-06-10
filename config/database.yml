@@ -26,8 +26,8 @@ development:
   host: localhost
   encoding: utf8
   database: ilias_bot_db_development
-  username: <%= ENV[PSQL_USERNAME] %>
-  password: <%= ENV[PSQL_PASSWORD] %>
+  username: <%= ENV['PSQL_USERNAME'] %>
+  password: <%= ENV['PSQL_PASSWORD'] %>
   pool: 5
   timeout: 5000
 
@@ -66,8 +66,8 @@ test:
   host: localhost
   encoding: utf8
   database: ilias_bot_db_test
-  username: <%= ENV[PSQL_USERNAME] %>
-  password: <%= ENV[PSQL_PASSWORD] %>
+  username: <%= ENV['PSQL_USERNAME'] %>
+  password: <%= ENV['PSQL_PASSWORD'] %>
   pool: 5
   timeout: 5000
 # As with config/secrets.yml, you never want to store sensitive information,
