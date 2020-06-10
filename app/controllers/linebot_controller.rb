@@ -49,7 +49,7 @@ class LinebotController < ApplicationController
       if event.message['text'].include?("おはよう")
         'おはようございます。'
       elsif event.message['text'].include?("天気")
-        exec_command_weather
+        exec_command_weather(event.message['text'])
       end
     end
 end

@@ -16,8 +16,8 @@ module WeatherMethods
 		end
 	end
 	# コマンド要求時の天気情報を取得し、メッセージを返すメソッド
-	def exec_command_weather
-		generate_response_message
+	def exec_command_weather(message)
+		generate_response_message(message)
 	end
 	
 	def rainy?
@@ -32,15 +32,16 @@ module WeatherMethods
 	private
 
 		# Line Botで返答する文章を生成するメソッド
-		def generate_response_message
-			location = "Tokyo"
+		def generate_response_message(message)
+
+			location = extract_location(message)
 			response = callback_open_weather_map(location)
 			# callback_open_weather_mapで取得したJSONから天候情報を抽出する
 			temp    = extract_from_json(TEMP, response)
 			weather = extract_from_json(WEATHER, response)
 			return_with_exception if ((temp == nil) || (weather == nil))
 
-			location = '東京都' if location == "Tokyo"
+			location = location_to_ja(location)
 			"現在の#{location}の天気は#{weather}。\n気温は#{temp}℃です。"
 		end
 		
@@ -48,6 +49,58 @@ module WeatherMethods
 		def callback_open_weather_map(location)
 			 response = open(BASE_URL + "?q=#{location},jp&APPID=#{API_KEY}")
 			 JSON.parse(response.read)
+		end
+
+		def extract_location(message)
+			if message.include?('東京')
+				'Tokyo'
+			elsif message.include?('千葉')
+				'Chiba'
+			elsif message.include?('神奈川')
+				'Kanagawa'
+			elsif message.include?('埼玉')
+				'Saitama'
+			elsif message.include?('茨城')
+				'Ibaraki'
+			elsif message.include?('愛知')
+				'Aichi'
+			elsif message.include?('三重')
+				'Mie'
+			elsif message.include?('栃木')
+				'Tochigi'
+			elsif message.include?('福島')
+				'Fukushima'
+			elsif message.include?('大阪')
+				'Osaka'
+			else
+				'Chiba'
+			end
+		end
+
+		def location_to_ja(location)
+			if location == 'Tokyo'
+				'東京都'
+			elsif location == 'Chiba'
+				'千葉県'
+			elsif location == 'Kanagawa'
+				'神奈川県'
+			elsif location == 'Saitama'
+				'埼玉県'
+			elsif location == 'Ibaraki'
+				'茨城県'
+			elsif location == 'Aichi'
+				'愛知県'
+			elsif location == 'Mie'
+				'三重県'
+			elsif location == 'Tochigi'
+				'栃木県'
+			elsif location == 'Fukushima'
+				'福島県'
+			elsif location == 'Osaka'
+				'大阪府'
+			else
+				'Tokyo'
+			end
 		end
 
 		# 天候情報を日本語に変換するメソッド
