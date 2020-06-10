@@ -72,6 +72,8 @@ module WeatherMethods
 				'Fukushima'
 			elsif message.include?('大阪')
 				'Osaka'
+			elsif message.include?('京都')
+				'Kyoto'
 			else
 				'Chiba'
 			end
@@ -99,7 +101,7 @@ module WeatherMethods
 			elsif location == 'Osaka'
 				'大阪府'
 			else
-				'Tokyo'
+				'東京都'
 			end
 		end
 
