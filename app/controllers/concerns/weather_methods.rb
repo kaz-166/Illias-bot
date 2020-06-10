@@ -20,7 +20,7 @@ module WeatherMethods
 		generate_response_message(message)
 	end
 	
-	def rainy?
+	def bad_weather?
 		response = callback_open_weather_map(location)
 		weather = extract_from_json(WEATHER, response)
 		if (weather == '雨') || (weather == '雪')

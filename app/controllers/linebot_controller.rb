@@ -45,11 +45,15 @@ class LinebotController < ApplicationController
       config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
       config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
     }
+    if bad_weather?
+      content = '現在はあまり天候がよくないみたいです。'
+    else
+      content = '現在は天候が良好のようですね。'
+    end
     message = {
                 type: 'text',
-                text: '定期送信テストです。'
+                text: content
               }
-    p cl.push_message(PUSH_TO_ID, message)
     cl.push_message(PUSH_TO_ID, message)
   end
 
