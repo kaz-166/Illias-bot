@@ -17,15 +17,12 @@ module WeatherMethods
       config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
     }
     if bad_weather?('Chiba')
-			content = '天候が崩れそうですよ。\n外出の際は傘の準備をお忘れなく。'
-    else
-      content = '天候は特に変わりなく良好です。'
-    end
-    message = {
+			message = {
                 type: 'text',
-                text: content
+                text: '天候が崩れそうですよ。\n外出の際は傘の準備をお忘れなく。'
               }
-    cl.push_message(PUSH_TO_ID, message)
+    	cl.push_message(PUSH_TO_ID, message)
+    end
 	end
 	
 	def self.exec_command_weather(message) # コマンド要求時の天気情報を取得しメッセージを返す
