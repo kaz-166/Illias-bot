@@ -68,10 +68,10 @@ module WeatherMethods
 
 		def extract_from_json(element, response)
 			if element == WEATHER
-				weather_to_ja(response['list'][2]['weather'][0]['main'])
+				weather_to_ja(response['list'][0]['weather'][0]['main'])
 			elsif element == TEMP
 				temp = response['list'][0]['main']['temp']
-				temp = (temp.to_i - 273).to_s
+				temp = (temp.to_i - 273).to_s	# ケルビン単位で取得されるためセルシウス度に変換
 				temp
 			else
 				nil

@@ -1,6 +1,7 @@
 class LinebotController < ApplicationController
   require 'line/bot'  # gem 'line-bot-api'
   include WeatherMethods
+  PUSH_TO_ID = ENV['PUSH_TO_ID']
 
   # callbackアクションのCSRFトークン認証を無効にする
   protect_from_forgery :except => [:callback]
@@ -40,7 +41,7 @@ class LinebotController < ApplicationController
   end
 
   def alert
-    
+    client.push_message(PUSH_TO_ID, '定期送信テストです。')
   end
 
   private
