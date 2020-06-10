@@ -11,16 +11,15 @@ module WeatherMethods
 	WEATHER = 'weather'
 	TEMP = 'temp'
 
-	# 悪天候の発生をを検知してユーザに通知するメソッド
-	def self.alert
+	def self.alert # 悪天候の発生をを検知してユーザに通知するメソッド
     cl ||= Line::Bot::Client.new { |config|
       config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
       config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
     }
     if bad_weather?('Chiba')
-      content = '現在はあまり天候がよくないみたいです。'
+			content = '天候が崩れそうですよ。\n外出の際は傘の準備をお忘れなく。'
     else
-      content = '現在は天候が良好のようですね。'
+      content = '天候は特に変わりなく良好です。'
     end
     message = {
                 type: 'text',
@@ -29,15 +28,16 @@ module WeatherMethods
     cl.push_message(PUSH_TO_ID, message)
 	end
 	
-	# コマンド要求時の天気情報を取得し、メッセージを返すメソッド
-	def self.exec_command_weather(message)
+	def self.exec_command_weather(message) # コマンド要求時の天気情報を取得し、メッセージを返すメソッド
 		generate_response_message(message)
 	end
 	
 	def self.bad_weather?(location)
 		response = callback_open_weather_map(location)
-		weather = extract_from_json(WEATHER, response)
-		if (weather == '雨') || (weather == '雪')
+		weather_now = extract_from_json(WEATHER, 0, response)
+		weather_1h_after = extract_from_json(WEATHER, 1, response)
+		if (!(weather_now == '雨') || (weather_now == '雪')) &&
+			 ((weather_1h_after == '雨') || (weather_1h_after == '雪'))
 			true
 		else
 			false
@@ -45,23 +45,33 @@ module WeatherMethods
 	end
 	
 	private
-		# Line Botで返答する文章を生成するメソッド
-		def self.generate_response_message(message)
+		def self.callback_open_weather_map(location) # Web APIを使用して天候情報を取得するメソッド
+			response = open(BASE_URL + "?q=#{location},jp&APPID=#{API_KEY}")
+			JSON.parse(response.read)
+		end
+
+		def self.generate_response_message(message) # Line Botで返答する文章を生成するメソッド
 			location = extract_location(message)
 			response = callback_open_weather_map(location)
 			# callback_open_weather_mapで取得したJSONから天候情報を抽出する
-			temp    = extract_from_json(TEMP, response)
-			weather = extract_from_json(WEATHER, response)
+			temp    = extract_from_json(TEMP, 0, response)
+			weather = extract_from_json(WEATHER, 0, response)
 			return_with_exception if ((temp == nil) || (weather == nil))
 
 			location = location_to_ja(location)
 			"現在の#{location}の天気は#{weather}。\n気温は#{temp}℃です。"
 		end
-		
-		# Web APIを使用して天候情報を取得するメソッド
-		def self.callback_open_weather_map(location)
-			 response = open(BASE_URL + "?q=#{location},jp&APPID=#{API_KEY}")
-			 JSON.parse(response.read)
+
+		def self.extract_from_json(element, hours, response)
+			if element == WEATHER
+				weather_to_ja(response['list'][hours]['weather'][0]['main'])
+			elsif element == TEMP
+				temp = response['list'][hours]['main']['temp']
+				temp = (temp.to_i - 273).to_s	# ケルビン単位で取得されるためセルシウス度に変換
+				temp
+			else
+				nil
+			end
 		end
 
 		def self.extract_location(message)
@@ -129,18 +139,6 @@ module WeatherMethods
 				'雨'
 			elsif weather == 'Snow'
 				'雪'
-			else
-				nil
-			end
-		end
-
-		def self.extract_from_json(element, response)
-			if element == WEATHER
-				weather_to_ja(response['list'][0]['weather'][0]['main'])
-			elsif element == TEMP
-				temp = response['list'][0]['main']['temp']
-				temp = (temp.to_i - 273).to_s	# ケルビン単位で取得されるためセルシウス度に変換
-				temp
 			else
 				nil
 			end
