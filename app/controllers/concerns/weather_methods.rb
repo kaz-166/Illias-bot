@@ -1,7 +1,9 @@
-# 悪天候の発生をを検知してユーザに通知する機能を実装するモジュール
-require 'json'
-require 'open-uri'
-module WeatherHelper 
+module WeatherMethods
+  extend ActiveSupport::Concern
+
+	require 'json'
+	require 'open-uri'
+ 
 	# 悪天候の発生をを検知してユーザに通知するメソッド
 	def exec_command_weather
 		'天気情報を取得しますね'
@@ -19,4 +21,5 @@ module WeatherHelper
 			# response = open(BASE_URL + "?q=Akashi-shi,jp&APPID=#{API_KEY}")
 			# puts JSON.pretty_generate(JSON.parse(response.read))
 		end
+
 end
