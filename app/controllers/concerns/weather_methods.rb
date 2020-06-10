@@ -11,7 +11,7 @@ module WeatherMethods
 	WEATHER = 'weather'
 	TEMP = 'temp'
 
-	def self.alert # 悪天候の発生をを検知してユーザに通知するメソッド
+	def self.alert # 悪天候の発生をを検知してユーザに通知
     cl ||= Line::Bot::Client.new { |config|
       config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
       config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
@@ -28,12 +28,13 @@ module WeatherMethods
     cl.push_message(PUSH_TO_ID, message)
 	end
 	
-	def self.exec_command_weather(message) # コマンド要求時の天気情報を取得し、メッセージを返すメソッド
+	def self.exec_command_weather(message) # コマンド要求時の天気情報を取得しメッセージを返す
 		generate_response_message(message)
 	end
 	
 	def self.bad_weather?(location)
 		response = callback_open_weather_map(location)
+		# 現在の天候と1時間後の天候を比較し、天候が崩れる場合はTrueを返す
 		weather_now = extract_from_json(WEATHER, 0, response)
 		weather_1h_after = extract_from_json(WEATHER, 1, response)
 		if (!(weather_now == '雨') || (weather_now == '雪')) &&
@@ -45,12 +46,12 @@ module WeatherMethods
 	end
 	
 	private
-		def self.callback_open_weather_map(location) # Web APIを使用して天候情報を取得するメソッド
+		def self.callback_open_weather_map(location) # Web APIを使用して天候情報を取得
 			response = open(BASE_URL + "?q=#{location},jp&APPID=#{API_KEY}")
 			JSON.parse(response.read)
 		end
 
-		def self.generate_response_message(message) # Line Botで返答する文章を生成するメソッド
+		def self.generate_response_message(message) # Line Botで返答する文章を生成
 			location = extract_location(message)
 			response = callback_open_weather_map(location)
 			# callback_open_weather_mapで取得したJSONから天候情報を抽出する
@@ -67,7 +68,7 @@ module WeatherMethods
 				weather_to_ja(response['list'][hours]['weather'][0]['main'])
 			elsif element == TEMP
 				temp = response['list'][hours]['main']['temp']
-				temp = (temp.to_i - 273).to_s	# ケルビン単位で取得されるためセルシウス度に変換
+				temp = (temp.to_i - 273).to_s	# OpenWeatherAPIでは温度が[K]で取得されるためセルシウス度に変換
 				temp
 			else
 				nil
@@ -128,7 +129,7 @@ module WeatherMethods
 			end
 		end
 
-		# 天候情報を日本語に変換するメソッド
+		# 天候情報を日本語に変換
 		# OpenWeatherMapのAPIに日本語モードも存在するが、かなり怪しい日本語なので自作する
 		def self.weather_to_ja(weather)
 			if    weather == 'Clear'
