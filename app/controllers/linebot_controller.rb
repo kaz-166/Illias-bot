@@ -40,8 +40,12 @@ class LinebotController < ApplicationController
       head :ok
   end
 
-  def alert
-    client.push_message(PUSH_TO_ID, '定期送信テストです。')
+  def self.alert
+    cl ||= Line::Bot::Client.new { |config|
+      config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
+      config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
+    }
+    cl.push_message(PUSH_TO_ID, '定期送信テストです。')
   end
 
   private
