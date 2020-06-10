@@ -1,7 +1,6 @@
 class LinebotController < ApplicationController
   require 'line/bot'  # gem 'line-bot-api'
   include WeatherMethods
-  PUSH_TO_ID = ENV['PUSH_TO_ID']
 
   # callbackアクションのCSRFトークン認証を無効にする
   protect_from_forgery :except => [:callback]
@@ -38,23 +37,6 @@ class LinebotController < ApplicationController
           end
       }
       head :ok
-  end
-
-  def self.alert
-    cl ||= Line::Bot::Client.new { |config|
-      config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
-      config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
-    }
-    if bad_weather?
-      content = '現在はあまり天候がよくないみたいです。'
-    else
-      content = '現在は天候が良好のようですね。'
-    end
-    message = {
-                type: 'text',
-                text: content
-              }
-    cl.push_message(PUSH_TO_ID, message)
   end
 
   private

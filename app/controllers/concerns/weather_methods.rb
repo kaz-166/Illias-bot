@@ -2,7 +2,9 @@ module WeatherMethods
   extend ActiveSupport::Concern
 	require 'json'
 	require 'open-uri'
+	require 'line/bot'  # gem 'line-bot-api'
 
+	PUSH_TO_ID = ENV['PUSH_TO_ID']
 	API_KEY  = ENV['OPEN_WEATHER_API_KEY']	# OpenWeatherのAPI_KEYを環境変数にセットすること
 	BASE_URL = "http://api.openweathermap.org/data/2.5/forecast"
 
@@ -10,17 +12,29 @@ module WeatherMethods
 	TEMP = 'temp'
 
 	# 悪天候の発生をを検知してユーザに通知するメソッド
-	def alert_weather
-		if rainy?
-
-		end
+	def self.alert
+    cl ||= Line::Bot::Client.new { |config|
+      config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
+      config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
+    }
+    if bad_weather?('Chiba')
+      content = '現在はあまり天候がよくないみたいです。'
+    else
+      content = '現在は天候が良好のようですね。'
+    end
+    message = {
+                type: 'text',
+                text: content
+              }
+    cl.push_message(PUSH_TO_ID, message)
 	end
+	
 	# コマンド要求時の天気情報を取得し、メッセージを返すメソッド
-	def exec_command_weather(message)
+	def self.exec_command_weather(message)
 		generate_response_message(message)
 	end
 	
-	def bad_weather?
+	def self.bad_weather?(location)
 		response = callback_open_weather_map(location)
 		weather = extract_from_json(WEATHER, response)
 		if (weather == '雨') || (weather == '雪')
@@ -29,11 +43,10 @@ module WeatherMethods
 			false
 		end
 	end
+	
 	private
-
 		# Line Botで返答する文章を生成するメソッド
-		def generate_response_message(message)
-
+		def self.generate_response_message(message)
 			location = extract_location(message)
 			response = callback_open_weather_map(location)
 			# callback_open_weather_mapで取得したJSONから天候情報を抽出する
@@ -46,12 +59,12 @@ module WeatherMethods
 		end
 		
 		# Web APIを使用して天候情報を取得するメソッド
-		def callback_open_weather_map(location)
+		def self.callback_open_weather_map(location)
 			 response = open(BASE_URL + "?q=#{location},jp&APPID=#{API_KEY}")
 			 JSON.parse(response.read)
 		end
 
-		def extract_location(message)
+		def self.extract_location(message)
 			if message.include?('東京')
 				'Tokyo'
 			elsif message.include?('千葉')
@@ -79,7 +92,7 @@ module WeatherMethods
 			end
 		end
 
-		def location_to_ja(location)
+		def self.location_to_ja(location)
 			if location == 'Tokyo'
 				'東京都'
 			elsif location == 'Chiba'
@@ -107,7 +120,7 @@ module WeatherMethods
 
 		# 天候情報を日本語に変換するメソッド
 		# OpenWeatherMapのAPIに日本語モードも存在するが、かなり怪しい日本語なので自作する
-		def weather_to_ja(weather)
+		def self.weather_to_ja(weather)
 			if    weather == 'Clear'
 				'晴れ'
 			elsif weather == 'Clouds'
@@ -121,7 +134,7 @@ module WeatherMethods
 			end
 		end
 
-		def extract_from_json(element, response)
+		def self.extract_from_json(element, response)
 			if element == WEATHER
 				weather_to_ja(response['list'][0]['weather'][0]['main'])
 			elsif element == TEMP
@@ -133,7 +146,7 @@ module WeatherMethods
 			end
 		end
 
-		def return_with_exception
+		def self.return_with_exception
 			return 'すみません。問題が発生したようです...'
 		end
 
