@@ -45,7 +45,12 @@ class LinebotController < ApplicationController
       config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
       config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
     }
-    cl.push_message(PUSH_TO_ID, '定期送信テストです。')
+    message = {
+                type: 'text',
+                text: '定期送信テストです。'
+              }
+    p cl.push_message(PUSH_TO_ID, message)
+    cl.push_message(PUSH_TO_ID, message)
   end
 
   private
