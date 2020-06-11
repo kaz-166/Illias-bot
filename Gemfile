@@ -35,6 +35,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'config'
 # Develop line bot applications
 gem 'line-bot-api'
+# Get Instanse Valiable in Rspec
+gem 'rails-controller-testing'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
