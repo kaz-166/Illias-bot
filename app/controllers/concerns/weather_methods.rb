@@ -12,16 +12,23 @@ module WeatherMethods
 	TEMP = 'temp'
 
 	def self.alert # 悪天候の発生をを検知してユーザに通知
+		# TODO: OpenWeatherAPIのコールを2回行っており、冗長。パフォーマンス常の観点から要修正。 
     cl ||= Line::Bot::Client.new { |config|
       config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
       config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
     }
-    if bad_weather?('Chiba')
+    if weather_goes_bad?('Chiba')
 			message = {
                 type: 'text',
                 text: "天候が崩れそうですよ。\n外出の際は傘の準備をお忘れなく。"
               }
-    	cl.push_message(PUSH_TO_ID, message)
+			cl.push_message(PUSH_TO_ID, message)
+		elsif weather_goes_good?('Chiba')
+			message = {
+				type: 'text',
+				text: '天候が回復しそうです。'
+			}
+			cl.push_message(PUSH_TO_ID, message)
     end
 	end
 	
@@ -29,13 +36,26 @@ module WeatherMethods
 		generate_response_message(message)
 	end
 	
-	def self.bad_weather?(location)
+	def self.weather_goes_bad?(location)
 		response = callback_open_weather_map(location)
 		# 現在の天候と1時間後の天候を比較し、天候が崩れる場合はTrueを返す
 		weather_now = extract_from_json(WEATHER, 0, response)
 		weather_1h_after = extract_from_json(WEATHER, 1, response)
 		if (!(weather_now == '雨') || (weather_now == '雪')) &&
 			 ((weather_1h_after == '雨') || (weather_1h_after == '雪'))
+			true
+		else
+			false
+		end
+	end
+
+	def self.weather_goes_good?(location)
+		response = callback_open_weather_map(location)
+		# 現在の天候と1時間後の天候を比較し、天候が崩れる場合はTrueを返す
+		weather_now = extract_from_json(WEATHER, 0, response)
+		weather_1h_after = extract_from_json(WEATHER, 1, response)
+		if ((weather_now == '雨') || (weather_now == '雪')) &&
+			 (!(weather_1h_after == '雨') || (weather_1h_after == '雪'))
 			true
 		else
 			false
