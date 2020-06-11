@@ -40,9 +40,9 @@ class LinebotController < ApplicationController
 
   private
     def parse_command(event)
-      if event.message['text'].include?("おはよう")
+      if event.message['text'].include?('おはよう')
         'おはようございます。'
-      elsif event.message['text'].include?("天気")
+      elsif event.message['text'].include?('天気')
         WeatherMethods.exec_command_weather(event.message['text'])
       end
     end

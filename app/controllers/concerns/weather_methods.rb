@@ -72,12 +72,13 @@ module WeatherMethods
 			location = extract_location(message)
 			response = callback_open_weather_map(location)
 			# callback_open_weather_mapで取得したJSONから天候情報を抽出する
-			temp    = extract_from_json(TEMP, 0, response)
-			weather = extract_from_json(WEATHER, 0, response)
+			hour, hour_message = extract_hours(message)
+			temp    = extract_from_json(TEMP, hour, response)
+			weather = extract_from_json(WEATHER, hour, response)
 			return_with_exception if ((temp == nil) || (weather == nil))
 
 			location = location_to_ja(location)
-			"現在の#{location}の天気は#{weather}。\n気温は#{temp}℃です。"
+			"#{hour_message}の#{location}の天気は#{weather}。\n気温は#{temp}℃です。"
 		end
 
 		def self.extract_from_json(element, hours, response)
@@ -89,6 +90,22 @@ module WeatherMethods
 				temp
 			else
 				nil
+			end
+		end
+		
+		# @message [String]
+		# @output [Integer, String]
+		def self.extract_hours(message)
+			if    message.include?('1時間後') || message.include?('１時間後')
+				return 1, '1時間後'
+			elsif message.include?('2時間後') || message.include?('２時間後')
+				return 2, '2時間後'
+			elsif message.include?('3時間後') || message.include?('３時間後')
+				return 3, '3時間後'
+			elsif message.include?('4時間後') || message.include?('４時間後')
+				return 4, '4時間後'
+			else
+				return 0, '現在'
 			end
 		end
 
