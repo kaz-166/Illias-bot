@@ -76,8 +76,7 @@ module WeatherMethods
 			temp    = extract_from_json(TEMP, hour, response)
 			weather = extract_from_json(WEATHER, hour, response)
 			return_with_exception if ((temp == nil) || (weather == nil))
-
-			location = location_to_ja(location)
+			location = location_to_ja(location)	# リプライ用に位置情報を日本語に変換
 			"#{hour_message}の#{location}の天気は#{weather}。\n気温は#{temp}℃です。"
 		end
 
