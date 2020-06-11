@@ -19,7 +19,7 @@ module WeatherMethods
     if bad_weather?('Chiba')
 			message = {
                 type: 'text',
-                text: '天候が崩れそうですよ。\n外出の際は傘の準備をお忘れなく。'
+                text: "天候が崩れそうですよ。\n外出の際は傘の準備をお忘れなく。"
               }
     	cl.push_message(PUSH_TO_ID, message)
     end
