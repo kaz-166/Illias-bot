@@ -1,7 +1,6 @@
 require 'rails_helper'
 require 'json'
 
-
 RSpec.describe LinebotController, type: :controller do
 
     def generate_posts(txt)
@@ -32,7 +31,7 @@ RSpec.describe LinebotController, type: :controller do
         end
       end
       context 'with a message about weather' do
-        it 'should reply message about Arbitary Prefs weather' do
+        it 'should reply message about arbitary Prefs weather' do
           post :callback, body: generate_posts("\"ねーねー！天気教えてー！\""), as: :json
           expect(assigns(:message)[:text]).to include '現在の千葉県の天気は'
         end
