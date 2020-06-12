@@ -7,6 +7,16 @@ hr{
 
 div.introduction{
     display: grid;
-    grid-template-columns: 0.1fr 1fr;
+    grid-template-columns: 0.15fr 1fr;
     margin-left: 2%;
+}
+
+div.intro_message{
+    p{
+        border: solid 1px #9c9c9c;
+        border-radius: 3px;
+        display: flex;
+        margin-right: 50%;
+        align-items: center;
+    }
 }

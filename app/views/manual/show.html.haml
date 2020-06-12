@@ -2,9 +2,12 @@
 %h1 Ilias-Line-Bot
 %div.introduction
 	%div
-		= image_tag 'introduction.png', :size => '80x80'
-	%div
-		このページはIlias-Line-Botのユーザマニュアルです。何かわからないことがあれば参考にしてくださいね。
+		= image_tag 'introduction.png', :size => '150x150'
+	%div.intro_message
+		%p
+			このページはIlias-Line-Botのユーザマニュアルです。
+			%br
+			何かわからないことがあれば参考にしてくださいね。
 %h2 機能一覧
 - YAML.load_file('app/views/manual/function.yml').each do |f|
 	= link_to f[0], f[1]
