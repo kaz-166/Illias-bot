@@ -37,6 +37,8 @@ gem 'config'
 gem 'line-bot-api'
 # Get Instanse Valiable in Rspec
 gem 'rails-controller-testing'
+# Use HAML Notation On Rails
+gem 'haml-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
