@@ -44,6 +44,9 @@ class LinebotController < ApplicationController
         'おはようございます。'
       elsif event.message['text'].include?('天気')
         WeatherMethods.exec_command_weather(event.message['text'])
+      elsif (event.message['text'].include?('使い方')) || (event.message['text'].include?('マニュアル'))
+        "ユーザズマニュアルのリンクを貼っておきますね。\n" +
+        'https://ilias-bot.herokuapp.com/manual'
       end
     end
 end
