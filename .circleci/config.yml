@@ -9,7 +9,7 @@ orbs:
 jobs:
   build: # our first job, named "build"
     docker:
-      - image: cimg/ruby:2.6.6-buster-node # use a tailored CircleCI docker image.
+      - image: circleci/ruby:2.6.6-buster-node # use a tailored CircleCI docker image.
         environment:
           RAILS_ENV: test
     steps:
