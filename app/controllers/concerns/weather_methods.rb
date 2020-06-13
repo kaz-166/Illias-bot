@@ -11,6 +11,14 @@ module WeatherMethods
 	WEATHER = 'weather'
 	TEMP = 'temp'
 
+	def self.matching?(message)
+		message.include?('天気') ? true : false
+	end
+
+	def self.exec_command_weather(message) # コマンド要求時の天気情報を取得しメッセージを返す
+		generate_response_message(message)
+	end
+
 	def self.alert # 悪天候の発生をを検知してユーザに通知
 		# TODO: OpenWeatherAPIのコールを2回行っており、冗長。パフォーマンス常の観点から要修正。 
     cl ||= Line::Bot::Client.new { |config|
@@ -30,10 +38,6 @@ module WeatherMethods
 			}
 			cl.push_message(PUSH_TO_ID, message)
     end
-	end
-	
-	def self.exec_command_weather(message) # コマンド要求時の天気情報を取得しメッセージを返す
-		generate_response_message(message)
 	end
 	
 	def self.weather_goes_bad?(location)

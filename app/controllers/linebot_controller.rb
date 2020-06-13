@@ -1,6 +1,15 @@
+# 
+# routing: Post '/callback' => 'LinbotController#callback'
+# Line-Botの各種設定を行う
+# このコントローラではLine-Bot機能を使用するための設定のみを行い、
+# 各種のロジックは/concerns以下のModuleに実装する。
+# 詳細機能のためのロジックをここに書くのは避けること
+#
 class LinebotController < ApplicationController
   require 'line/bot'  # gem 'line-bot-api'
+  include GreetingMethods
   include WeatherMethods
+  include ManualMethods
 
   # callbackアクションのCSRFトークン認証を無効にする
   protect_from_forgery :except => [:callback]
@@ -40,13 +49,12 @@ class LinebotController < ApplicationController
 
   private
     def parse_command(event)
-      if event.message['text'].include?('おはよう')
-        'おはようございます。'
-      elsif event.message['text'].include?('天気')
+      if GreetingMethods.matching?(event.message['text'])
+        GreetingMethods.exec_command_greeting
+      elsif WeatherMethods.matching?(event.message['text'])
         WeatherMethods.exec_command_weather(event.message['text'])
-      elsif (event.message['text'].include?('使い方')) || (event.message['text'].include?('マニュアル'))
-        "ユーザズマニュアルのリンクを貼っておきますね。\n" +
-        'https://ilias-bot.herokuapp.com/manual'
+      elsif ManualMethods.matching?(event.message['text'])
+        ManualMethods.exec_commamd_manual
       end
     end
 end
