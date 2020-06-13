@@ -10,7 +10,7 @@ jobs:
   build: # our first job, named "build"
     docker:
       - image: cimg/ruby:2.6.6-buster-node # use a tailored CircleCI docker image.
-        enviroment:
+        environment:
           RAILS_ENV: test
     steps:
       - checkout # pull down our git code.
