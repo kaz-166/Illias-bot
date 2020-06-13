@@ -37,6 +37,8 @@ gem 'line-bot-api'
 gem 'rails-controller-testing'
 # Use HAML Notation On Rails
 gem 'haml-rails'
+# Use a static code analyzer
+gem 'rubocop'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
