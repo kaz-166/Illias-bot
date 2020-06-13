@@ -28,7 +28,9 @@ jobs:
     parallelism: 3 
     # here we set TWO docker images.
     docker:
-      - image: cimg/ruby:2.6.6-buster-node # this is our primary docker image, where step commands run.
+      - image: circleci/ruby:2.6.6-buster-node # this is our primary docker image, where step commands run.
+        environment:
+          RAILS_ENV: test
       - image: circleci/postgres:9.5-alpine 
         environment: # add POSTGRES environment variables.
           POSTGRES_USER: <%= ENV['PSQL_USERNAME'] %>
@@ -38,9 +40,6 @@ jobs:
     environment:
       BUNDLE_JOBS: "3"
       BUNDLE_RETRY: "3"
-      PGHOST: 127.0.0.1
-      PGUSER: circleci-demo-ruby
-      PGPASSWORD: ""
       RAILS_ENV: test
     # A series of steps to run, some are similar to those in "build".
     steps:
@@ -58,7 +57,9 @@ jobs:
           name: Database setup
           command: bundle exec rails db:schema:load --trace
       # Run rspec in parallel
-      - ruby/rspec-test
+      - run:
+          name: Execute RSpec
+          command: bundle exec rspec
 
 # We use workflows to orchestrate the jobs that we declared above.
 workflows:
