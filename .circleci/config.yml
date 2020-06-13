@@ -9,7 +9,7 @@ orbs:
 jobs:
   build: # our first job, named "build"
     docker:
-      - image: circleci/ruby:2.6.6-buster-node # use a tailored CircleCI docker image.
+      - image: circleci/ruby:2.6-node # use a tailored CircleCI docker image.
         environment:
           RAILS_ENV: test
     steps:
@@ -28,7 +28,7 @@ jobs:
     parallelism: 3 
     # here we set TWO docker images.
     docker:
-      - image: circleci/ruby:2.6.6-buster-node # this is our primary docker image, where step commands run.
+      - image: circleci/ruby:2.6-node # this is our primary docker image, where step commands run.
         environment:
           RAILS_ENV: test
       - image: circleci/postgres:9.5-alpine 
