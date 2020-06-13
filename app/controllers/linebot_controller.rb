@@ -7,9 +7,6 @@
 #
 class LinebotController < ApplicationController
   require 'line/bot'  # gem 'line-bot-api'
-  include GreetingMethods
-  include WeatherMethods
-  include ManualMethods
 
   # callbackアクションのCSRFトークン認証を無効にする
   protect_from_forgery :except => [:callback]
@@ -55,6 +52,8 @@ class LinebotController < ApplicationController
         WeatherMethods.exec_command_weather(event.message['text'])
       elsif ManualMethods.matching?(event.message['text'])
         ManualMethods.exec_commamd_manual
+      elsif ReminderMethods.matching?(event.message['text'])
+        ReminderMethods.exec_commamd_reminder(event.message['text'])
       end
     end
 end
