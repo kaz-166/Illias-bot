@@ -14,7 +14,7 @@
       <img src="./assets/0.12.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2020-06-14T17:40:15+09:00">2020-06-14T17:40:15+09:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2020-06-14T20:45:16+09:00">2020-06-14T20:45:16+09:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="yellow">
-  86.33%
+  86.89%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         3.27
+         3.18
        </span>
     </span> hits/line
     )
@@ -39,15 +39,15 @@
   <a name="AllFiles"></a>
 
   <div>
-    <b>31</b> files in total.
+    <b>34</b> files in total.
   </div>
 
   <div class="t-line-summary">
-    <b>395</b> relevant lines,
-    <span class="green"><b>341</b> lines covered</span> and
+    <b>412</b> relevant lines,
+    <span class="green"><b>358</b> lines covered</span> and
     <span class="red"><b>54</b> lines missed. </span>
     (<span class="yellow">
-  86.33%
+  86.89%
 </span>
 )
   </div>
@@ -153,6 +153,28 @@
             <td class="cell--number">2</td>
             <td class="cell--number">1</td>
             <td class="cell--number">1</td>
+            <td class="cell--number">0</td>
+            <td class="cell--number">1.00</td>
+            
+          </tr>
+        
+          <tr class="t-file">
+            <td class="strong t-file__name"><a href="#24ba70d70a10fc10c2c32847ac9ce7114bb06d6b" class="src_link" title="app/models/application_record.rb">app/models/application_record.rb</a></td>
+            <td class="green strong cell--number t-file__coverage">100.00 %</td>
+            <td class="cell--number">3</td>
+            <td class="cell--number">2</td>
+            <td class="cell--number">2</td>
+            <td class="cell--number">0</td>
+            <td class="cell--number">1.00</td>
+            
+          </tr>
+        
+          <tr class="t-file">
+            <td class="strong t-file__name"><a href="#ab45edf59d546e10ab7158508bea742c2707cb7c" class="src_link" title="app/models/reminder.rb">app/models/reminder.rb</a></td>
+            <td class="green strong cell--number t-file__coverage">100.00 %</td>
+            <td class="cell--number">4</td>
+            <td class="cell--number">3</td>
+            <td class="cell--number">3</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
             
@@ -384,6 +406,17 @@
             <td class="cell--number">3</td>
             <td class="cell--number">2</td>
             <td class="cell--number">2</td>
+            <td class="cell--number">0</td>
+            <td class="cell--number">1.00</td>
+            
+          </tr>
+        
+          <tr class="t-file">
+            <td class="strong t-file__name"><a href="#5bad5d3dd878d1148e6019f74618e2a9e5975b73" class="src_link" title="spec/models/reminder_spec.rb">spec/models/reminder_spec.rb</a></td>
+            <td class="green strong cell--number t-file__coverage">100.00 %</td>
+            <td class="cell--number">17</td>
+            <td class="cell--number">12</td>
+            <td class="cell--number">12</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
             
@@ -950,7 +983,7 @@
 
             
 
-            <code class="ruby">	ERROR_MESSAGE_DAY_EMPTY  = &#39;日付の指定もお願いします。&#39;</code>
+            <code class="ruby">	ERROR_MESSAGE_DAY_EMPTY   = &#39;日付の指定もお願いします。&#39;</code>
           </li>
         </div>
       
@@ -961,7 +994,7 @@
 
             
 
-            <code class="ruby">	ERROR_MESSAGE_DAY_INVALID  = &#39;日付がおかしいですよ？&#39;</code>
+            <code class="ruby">	ERROR_MESSAGE_DAY_INVALID = &#39;日付がおかしいですよ？&#39;</code>
           </li>
         </div>
       
@@ -972,7 +1005,7 @@
 
             
 
-            <code class="ruby">	ERROR_MESSAGE_TIME = &#39;時間がおかしいですよ？&#39;</code>
+            <code class="ruby">	ERROR_MESSAGE_TIME        = &#39;時間がおかしいですよ？&#39;</code>
           </li>
         </div>
       
@@ -1951,7 +1984,7 @@
 
             
 
-            <code class="ruby">					# [Check!] うるう年の考慮をすること。</code>
+            <code class="ruby">					# [Check!] 閏年の考慮をすること。</code>
           </li>
         </div>
       
@@ -4963,6 +4996,145 @@
       
         <div>
           <li class="never" data-hits="" data-linenumber="2">
+            
+            
+
+            
+
+            <code class="ruby">end</code>
+          </li>
+        </div>
+      
+    </ol>
+  </pre>
+</div>
+
+      
+        <div class="source_table" id="24ba70d70a10fc10c2c32847ac9ce7114bb06d6b">
+  <div class="header">
+    <h3>app/models/application_record.rb</h3>
+    <h4>
+      <span class="green">
+  100.0%
+</span>
+
+      lines covered
+    </h4>
+
+    
+
+    <div class="t-line-summary">
+      <b>2</b> relevant lines.
+      <span class="green"><b>2</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+
+    
+
+  </div>
+
+  <pre>
+    <ol>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="1">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">class ApplicationRecord &lt; ActiveRecord::Base</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="2">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  self.abstract_class = true</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="3">
+            
+            
+
+            
+
+            <code class="ruby">end</code>
+          </li>
+        </div>
+      
+    </ol>
+  </pre>
+</div>
+
+      
+        <div class="source_table" id="ab45edf59d546e10ab7158508bea742c2707cb7c">
+  <div class="header">
+    <h3>app/models/reminder.rb</h3>
+    <h4>
+      <span class="green">
+  100.0%
+</span>
+
+      lines covered
+    </h4>
+
+    
+
+    <div class="t-line-summary">
+      <b>3</b> relevant lines.
+      <span class="green"><b>3</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+
+    
+
+  </div>
+
+  <pre>
+    <ol>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="1">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">class Reminder &lt; ApplicationRecord</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="2">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  validates :content, presence: true</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="3">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  validates :time,    presence: true</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="4">
             
             
 
@@ -10108,6 +10280,224 @@
             
 
             <code class="ruby"></code>
+          </li>
+        </div>
+      
+    </ol>
+  </pre>
+</div>
+
+      
+        <div class="source_table" id="5bad5d3dd878d1148e6019f74618e2a9e5975b73">
+  <div class="header">
+    <h3>spec/models/reminder_spec.rb</h3>
+    <h4>
+      <span class="green">
+  100.0%
+</span>
+
+      lines covered
+    </h4>
+
+    
+
+    <div class="t-line-summary">
+      <b>12</b> relevant lines.
+      <span class="green"><b>12</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+
+    
+
+  </div>
+
+  <pre>
+    <ol>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="1">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">require &#39;rails_helper&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="2">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">require &#39;date&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="3">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="4">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">RSpec.describe Reminder, type: :model do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="5">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  it &#39;should be succeed in create&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="6">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    rem = Reminder.new(content: &quot;a&quot;, time: DateTime.now)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="7">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    expect(rem.save).to eq true</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="8">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="9">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  it &#39;should be failed in an empty content&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="10">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    rem = Reminder.new(content: &quot;&quot;, time: DateTime.now)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="11">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    expect(rem.save).to eq false</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="12">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="13">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  it &#39;should be failed in an empty time&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="14">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    rem = Reminder.new(content: &quot;a&quot;, time: &quot;&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="15">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    expect(rem.save).to eq false</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="16">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="17">
+            
+            
+
+            
+
+            <code class="ruby">end</code>
           </li>
         </div>
       

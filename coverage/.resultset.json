@@ -870,6 +870,42 @@
           null
         ]
       },
+      "C:/Users/KAZUMA/ilias_bot/spec/models/reminder_spec.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "C:/Users/KAZUMA/ilias_bot/app/models/reminder.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "C:/Users/KAZUMA/ilias_bot/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
       "C:/Users/KAZUMA/ilias_bot/spec/requests/manual_request_spec.rb": {
         "lines": [
           1,
@@ -994,6 +1030,6 @@
         ]
       }
     },
-    "timestamp": 1592124015
+    "timestamp": 1592135116
   }
 }
