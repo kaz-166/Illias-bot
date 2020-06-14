@@ -1,3 +1,5 @@
+require 'date'
+
 INIT_REMIND_MODE    = 0
 CONTENT_REMIND_MODE = 1
 TIME_REMIND_MODE    = 2
@@ -26,6 +28,7 @@ module ReminderMethods
 		end
 	end
 
+	# [Refactor!] このメソッド内にコメントのリプライとデータベース操作の両方の機能が入っており、単一責務の原則の観点から望ましくない。
 	def self.exec_commamd_reminder(message)
 		case ($remind_state)
 		when INIT_REMIND_MODE
@@ -33,9 +36,20 @@ module ReminderMethods
 			'了解です。リマインド内容を教えてください。'
 		when CONTENT_REMIND_MODE
 			$remind_state = TIME_REMIND_MODE
-			'了解です。リマインドする時間を教えてください。'
+			# [Todo] 仮の値。正しい時間を入れる。
+			rem = Reminder.new(content: 'xxx', time: DateTime.now)
+			if rem.save
+				'了解です。リマインドする時間を教えてください。'
+			else
+				'すみません、ちょっと問題が発生したようです...'
+			end
 		when TIME_REMIND_MODE
-			remind_time(message)
+			reply = remind_time(message)
+			if (reply != ERROR_MESSAGE_DAY_EMPTY) && (reply != ERROR_MESSAGE_DAY_INVALID) && (reply != ERROR_MESSAGE_TIME)
+				rem = Reminder.last
+				rem.update(time: DateTime.now)
+			end
+			reply
 		else
 			'不正な分岐です。'
 		end
@@ -93,10 +107,13 @@ module ReminderMethods
 		def self.valid_day?(month, day)
 			if month <= 12
 				case (day)
+				# 31日まである月 
 				when 1, 3, 5, 7, 8, 10, 12
-					day <= 31 ? true : false  
+					day <= 31 ? true : false
+				# 30日までの月   
 				when 4, 6, 9, 11
 					day <= 30 ? true : false  
+				# 
 				when 2
 					# [Check!] 閏年の考慮をすること。
 					day <= 29 ? true : false  
