@@ -36,20 +36,15 @@ module ReminderMethods
 			'了解です。リマインド内容を教えてください。'
 		when CONTENT_REMIND_MODE
 			$remind_state = TIME_REMIND_MODE
-			# [Todo] 仮の値。正しい時間を入れる。
-			rem = Reminder.new(content: 'xxx', time: DateTime.now)
+			# TimeはTIME_REMIND_MODEステートで更新されるのでここでは仮の値を入れている
+			rem = Reminder.new(content: message, time: DateTime.now)
 			if rem.save
 				'了解です。リマインドする時間を教えてください。'
 			else
 				'すみません、ちょっと問題が発生したようです...'
 			end
 		when TIME_REMIND_MODE
-			reply = remind_time(message)
-			if (reply != ERROR_MESSAGE_DAY_EMPTY) && (reply != ERROR_MESSAGE_DAY_INVALID) && (reply != ERROR_MESSAGE_TIME)
-				rem = Reminder.last
-				rem.update(time: DateTime.now)
-			end
-			reply
+			remind_time(message)
 		else
 			'不正な分岐です。'
 		end
@@ -75,16 +70,57 @@ module ReminderMethods
 				ti_array = time.to_a[0].split(/時|:/)
 				if valid_time?(ti_array[0].to_i, ti_array[1].to_i)
 					$remind_state = INIT_REMIND_MODE
+					rem = Reminder.last
 						if ti_array.length == 1
-							if (day_elements[0] == '今日') || (day_elements[0] == '明日')
+							if day_elements[0] == '今日'
+								rem.update(time: DateTime.new(DateTime.now.year,
+																							DateTime.now.month,
+																							DateTime.now.day,
+																							ti_array[0].to_i,
+																							0,
+																							0))
+								"了解しました。#{day_elements[0]}の#{ti_array[0]}時にまた連絡しますね。"
+							elsif day_elements[0] == '明日'
+								rem.update(time: DateTime.new(DateTime.today.next_day(1).year,
+																							Date.today.next_day(1).month,
+																							Date.today.next_day(1).day,
+																							ti_array[0].to_i,
+																							0,
+																							0))
 								"了解しました。#{day_elements[0]}の#{ti_array[0]}時にまた連絡しますね。"
 							else
+								rem.update(time: DateTime.new(DateTime.now.year,
+																							day_elements[0].to_i,
+																							day_elements[1].to_i,
+																							ti_array[0].to_i,
+																							0,
+																							0))
 								"了解しました。#{day_elements[0]}月#{day_elements[1]}日の#{ti_array[0]}時にまた連絡しますね。"
 							end
 						else
-							if (day_elements[0] == '今日') || (day_elements[0] == '明日')
+							if day_elements[0] == '今日'
+								rem.update(time: DateTime.new(DateTime.now.year,
+																							DateTime.now.month,
+																							DateTime.now.day,
+																							ti_array[0].to_i,
+																							ti_array[1].to_i,
+																							0))
+								"了解しました。#{day_elements[0]}の#{ti_array[0]}時#{ti_array[1]}分にまた連絡しますね。"
+							elsif day_elements[0] == '明日'
+								rem.update(time: DateTime.new(Date.today.next_day(1).year,
+																							Date.today.next_day(1).month,
+																							Date.today.next_day(1).day,
+																							ti_array[0].to_i,
+																							ti_array[1].to_i,
+																							0))
 								"了解しました。#{day_elements[0]}の#{ti_array[0]}時#{ti_array[1]}分にまた連絡しますね。"
 							else
+								rem.update(time: DateTime.new(DateTime.now.year,
+																							day_elements[0].to_i,
+																							day_elements[1].to_i,
+																							ti_array[0].to_i,
+																							ti_array[1].to_i,
+																							0))
 								"了解しました。#{day_elements[0]}月#{day_elements[1]}日の#{ti_array[0]}時#{ti_array[1]}分にまた連絡しますね。"
 							end
 						end
@@ -96,13 +132,13 @@ module ReminderMethods
 			end
 		end
 
-		# @input [Integer, Integer]
+		# @input  [Integer, Integer]
 		# @output [Boolean]
 		def self.valid_time?(hour, minute)
 			(hour <= 24) && (minute <= 59) ? true : false 
 		end
 
-		# @input [Integer, Integer]
+		# @input  [Integer, Integer]
 		# @output [Boolean]
 		def self.valid_day?(month, day)
 			if month <= 12

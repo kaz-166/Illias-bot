@@ -88,7 +88,6 @@ RSpec.describe LinebotController, type: :controller do
       end
       it 'should reply a message for registration of reminding and go next state' do
         $remind_state = CONTENT_REMIND_MODE
-        Reminder.create(content: 'xxx', time: DateTime.now)
         post :callback, body: generate_posts("\"リマインド\""), as: :json
         expect(assigns(:message)[:text]).to include '了解です。リマインドする時間を教えてください。'
         expect($remind_state).to eq TIME_REMIND_MODE
