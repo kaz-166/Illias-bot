@@ -54,6 +54,8 @@ class LinebotController < ApplicationController
         ManualMethods.exec_commamd_manual
       elsif ReminderMethods.matching?(event.message['text'])
         ReminderMethods.exec_commamd_reminder(event.message['text'])
+      else
+        # コマンド不一致の場合は何も返さない
       end
     end
 end

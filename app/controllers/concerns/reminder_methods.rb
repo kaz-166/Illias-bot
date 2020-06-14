@@ -17,7 +17,7 @@ module ReminderMethods
 		elsif $remind_state == TIME_REMIND_MODE
 			true
 		else
-			# このコードには到達しない
+			'不正な分岐です。'
 		end
 	end
 
@@ -29,10 +29,25 @@ module ReminderMethods
 			$remind_state = TIME_REMIND_MODE
 			'了解です。リマインドする時間を教えてください。'
 		elsif $remind_state == TIME_REMIND_MODE
-			if message.include?(':')
+			if (time = /[0-9]+:[0-9]+/.match(message)) != nil
+				if (day = /今日|明日|([0-9]+月[0-9]+日)|([0-9]+\/[0-9]+)/.match(message)) != nil
+					$remind_state = INIT_REMIND_MODE
+					"了解しました。#{day}の#{time.to_a[0].gsub!(':', '時')}分にまた連絡しますね。"
+				else
+					'日付の指定もお願いします。'
+				end
+			elsif (time = /[0-9]+時[0-9]+分/.match(message)) != nil 
+				if (day = /今日|明日|([0-9]+月[0-9]+日)|([0-9]+\/[0-9]+)/.match(message)) != nil
+					$remind_state = INIT_REMIND_MODE
+					"了解しました。#{day}の#{time.to_a[0]}にまた連絡しますね。"
+				else
+					'日付の指定もお願いします。'
+				end
+			else
+				'時間がおかしいですよ？'
 			end
 		else
-			# このコードには到達しない
+			'不正な分岐です。'
 		end
 	end 
 end
