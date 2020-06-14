@@ -109,39 +109,39 @@ RSpec.describe LinebotController, type: :controller do
       it 'should reply a message demanding remind-time OK.3' do
         $remind_state = TIME_REMIND_MODE
         post :callback, body: generate_posts("\"4/12の18:5\""), as: :json
-        expect(assigns(:message)[:text]).to include '了解しました。4/12の18時5分にまた連絡しますね。'
+        expect(assigns(:message)[:text]).to include '了解しました。4月12日の18時5分にまた連絡しますね。'
         expect($remind_state).to eq INIT_REMIND_MODE
       end
-      # it 'should reply a message demanding remind-time OK.4' do
-      #   $remind_state = TIME_REMIND_MODE
-      #   post :callback, body: generate_posts("\"12月12日の22時\""), as: :json
-      #   expect(assigns(:message)[:text]).to include '了解しました。12/12の22時にまた連絡しますね。'
-      #   expect($remind_state).to eq INIT_REMIND_MODE
-      # end
-      # it 'should reply a message demanding remind-time NG.1' do
-      #  $remind_state = TIME_REMIND_MODE
-      #  post :callback, body: generate_posts("\"今日の27時\""), as: :json
-      #  expect(assigns(:message)[:text]).to include '時間がおかしいですよ？'
-      #  expect($remind_state).to eq TIME_REMIND_MODE
-      # end
-      # it 'should reply a message demanding remind-time NG.2' do
-      #   $remind_state = TIME_REMIND_MODE
-      #   post :callback, body: generate_posts("\"今日の23:67\""), as: :json
-      #   expect(assigns(:message)[:text]).to include '時間がおかしいですよ？'
-      #   expect($remind_state).to eq TIME_REMIND_MODE
-      # end
+      it 'should reply a message demanding remind-time OK.4' do
+         $remind_state = TIME_REMIND_MODE
+         post :callback, body: generate_posts("\"12月12日の22時\""), as: :json
+         expect(assigns(:message)[:text]).to include '了解しました。12月12日の22時にまた連絡しますね。'
+         expect($remind_state).to eq INIT_REMIND_MODE
+       end
+      it 'should reply a message demanding remind-time NG.1' do
+        $remind_state = TIME_REMIND_MODE
+        post :callback, body: generate_posts("\"今日の27時\""), as: :json
+        expect(assigns(:message)[:text]).to include '時間がおかしいですよ？'
+        expect($remind_state).to eq TIME_REMIND_MODE
+      end
+      it 'should reply a message demanding remind-time NG.2' do
+        $remind_state = TIME_REMIND_MODE
+        post :callback, body: generate_posts("\"今日の23:67\""), as: :json
+        expect(assigns(:message)[:text]).to include '時間がおかしいですよ？'
+        expect($remind_state).to eq TIME_REMIND_MODE
+       end
       it 'should reply a message demanding remind-time NG.3' do
         $remind_state = TIME_REMIND_MODE
         post :callback, body: generate_posts("\"12:13\""), as: :json
         expect(assigns(:message)[:text]).to include '日付の指定もお願いします。'
         expect($remind_state).to eq TIME_REMIND_MODE
       end
-      # it 'should reply a message demanding remind-time NG.4' do
-      #  $remind_state = TIME_REMIND_MODE
-      #  post :callback, body: generate_posts("\"13月67日の12:13\""), as: :json
-      #  expect(assigns(:message)[:text]).to include '日付がおかしいですよ？'
-      #  expect($remind_state).to eq TIME_REMIND_MODE
-      # end
+      it 'should reply a message demanding remind-time NG.4' do
+        $remind_state = TIME_REMIND_MODE
+        post :callback, body: generate_posts("\"13月67日の12:13\""), as: :json
+        expect(assigns(:message)[:text]).to include '日付がおかしいですよ？'
+        expect($remind_state).to eq TIME_REMIND_MODE
+      end
     end
   end
 end
