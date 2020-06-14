@@ -58,6 +58,7 @@ jobs:
       - run:
           name: Database setup
           command: bundle exec rails db:schema:load --trace
+      - run: bundle exec rake db:migrate
       # Run rspec in parallel
       - run:
           name: Execute RSpec
