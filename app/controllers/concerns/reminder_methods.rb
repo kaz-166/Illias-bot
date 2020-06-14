@@ -7,9 +7,9 @@ module ReminderMethods
 
 	REGEX_DAY  = /今日|明日|([0-9]+月[0-9]+)|([0-9]+\/[0-9]+)/
 	REGEX_TIME = /([0-9]+:[0-9]+)|([0-9]+時[0-9]+)|([0-9]+時)/
-	ERROR_MESSAGE_DAY_EMPTY  = '日付の指定もお願いします。'
-	ERROR_MESSAGE_DAY_INVALID  = '日付がおかしいですよ？'
-	ERROR_MESSAGE_TIME = '時間がおかしいですよ？'
+	ERROR_MESSAGE_DAY_EMPTY   = '日付の指定もお願いします。'
+	ERROR_MESSAGE_DAY_INVALID = '日付がおかしいですよ？'
+	ERROR_MESSAGE_TIME        = '時間がおかしいですよ？'
 	# [Check!] テストコードから参照する必要性があったので大域変数として定義したが、不必要にスコープを広げており、本来すべきではない。
 	#          おそらく他に方法があると考えられるので要調査。
 	$remind_state = INIT_REMIND_MODE
@@ -98,7 +98,7 @@ module ReminderMethods
 				when 4, 6, 9, 11
 					day <= 30 ? true : false  
 				when 2
-					# [Check!] うるう年の考慮をすること。
+					# [Check!] 閏年の考慮をすること。
 					day <= 29 ? true : false  
 				else
 					false
