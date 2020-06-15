@@ -74,15 +74,19 @@ RSpec.describe LinebotController, type: :controller do
 				expect(assigns(:message)[:text]).to include '日付がおかしいですよ？'
 				expect($remind_state).to eq TIME_REMIND_MODE
 			end
-		
-		# context 'in reminder integration test' do
-    #  it 'should be success' do
-    #    post :callback, body: generate_posts("\"リマインド\""), as: :json
-    #    post :callback, body: generate_posts("\"歯医者\""), as: :json
-    #    post :callback, body: generate_posts("\"明日の5時45分\""), as: :json
-    #    expect(assigns(:message)[:text]).to include '了解しました。'
-    #  end
-    # end
+		end
+
+		context 'in reminder integration test' do
+			it 'should save a content into database correctly' do
+				$remind_state = INIT_REMIND_MODE
+				post :callback, body: generate_posts("\"リマインド\""), as: :json
+				expect(assigns(:message)[:text]).to include '了解です。リマインド内容を教えてください。'
+				post :callback, body: generate_posts("\"歯医者\""), as: :json
+				expect(assigns(:message)[:text]).to include '了解です。リマインドする時間を教えてください。'
+				post :callback, body: generate_posts("\"明日の5時45分\""), as: :json
+				expect(assigns(:message)[:text]).to include '了解しました。'
+				expect(Reminder.last.content).to eq "歯医者"
+			end
 		end
 	end
 end

@@ -36,12 +36,13 @@ module ReminderMethods
 			$remind_state = CONTENT_REMIND_MODE
 			'了解です。リマインド内容を教えてください。'
 		when CONTENT_REMIND_MODE
-			$remind_state = TIME_REMIND_MODE
 			# TimeはTIME_REMIND_MODEステートで更新されるのでここでは仮の値を入れている
 			rem = Reminder.new(content: message, time: DateTime.now)
 			if rem.save
+				$remind_state = TIME_REMIND_MODE
 				'了解です。リマインドする時間を教えてください。'
 			else
+				$remind_state = INIT_REMIND_MODE
 				ERROR_MESSAGE_DATABASE
 			end
 		when TIME_REMIND_MODE
