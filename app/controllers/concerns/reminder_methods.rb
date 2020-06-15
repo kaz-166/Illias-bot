@@ -42,7 +42,7 @@ module ReminderMethods
 			if rem.save
 				'了解です。リマインドする時間を教えてください。'
 			else
-				'すみません、ちょっと問題が発生したようです...'
+				ERROR_MESSAGE_DATABASE
 			end
 		when TIME_REMIND_MODE
 			remind_time(message)
