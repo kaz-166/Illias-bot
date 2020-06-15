@@ -604,9 +604,9 @@
           9,
           0,
           9,
-          8,
-          1,
-          1,
+          9,
+          0,
+          0,
           0,
           0,
           null,
@@ -630,16 +630,6 @@
           1,
           null,
           1,
-          23,
-          null,
-          null,
-          null,
-          null,
-          23,
-          23,
-          null,
-          null,
-          1,
           1,
           1,
           1,
@@ -713,7 +703,6 @@
           null,
           1,
           1,
-          null,
           1,
           1,
           1,
@@ -915,11 +904,12 @@
           null
         ]
       },
-      "C:/Users/KAZUMA/ilias_bot/spec/requests/manual_request_spec.rb": {
+      "C:/Users/KAZUMA/ilias_bot/spec/system/reminder_spec.rb": {
         "lines": [
           1,
           null,
           1,
+          null,
           null,
           null
         ]
@@ -1092,6 +1082,6 @@
         ]
       }
     },
-    "timestamp": 1592157848
+    "timestamp": 1592193205
   }
 }
