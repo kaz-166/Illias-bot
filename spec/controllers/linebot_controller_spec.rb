@@ -83,6 +83,7 @@ RSpec.describe LinebotController, type: :controller do
         expect($remind_state).to eq TIME_REMIND_MODE
       end
     end
+
     context 'with a message about reminding time after registration' do
       it 'should reply a message demanding remind-time OK.1' do
         $remind_state = TIME_REMIND_MODE
@@ -125,7 +126,7 @@ RSpec.describe LinebotController, type: :controller do
         post :callback, body: generate_posts("\"今日の23:67\""), as: :json
         expect(assigns(:message)[:text]).to include '時間がおかしいですよ？'
         expect($remind_state).to eq TIME_REMIND_MODE
-       end
+      end
       it 'should reply a message demanding remind-time NG.3' do
         $remind_state = TIME_REMIND_MODE
         Reminder.create(content: 'xxx', time: DateTime.now)
@@ -141,6 +142,16 @@ RSpec.describe LinebotController, type: :controller do
         expect($remind_state).to eq TIME_REMIND_MODE
       end
     end
+
+    # context 'in reminder integration test' do
+    #  it 'should be success' do
+    #    post :callback, body: generate_posts("\"リマインド\""), as: :json
+    #    post :callback, body: generate_posts("\"歯医者\""), as: :json
+    #    post :callback, body: generate_posts("\"明日の5時45分\""), as: :json
+    #    expect(assigns(:message)[:text]).to include '了解しました。'
+    #  end
+    # end
+
   end
 end
 

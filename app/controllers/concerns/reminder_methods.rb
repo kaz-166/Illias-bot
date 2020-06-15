@@ -12,6 +12,7 @@ module ReminderMethods
 	ERROR_MESSAGE_DAY_EMPTY   = '日付の指定もお願いします。'
 	ERROR_MESSAGE_DAY_INVALID = '日付がおかしいですよ？'
 	ERROR_MESSAGE_TIME        = '時間がおかしいですよ？'
+	ERROR_MESSAGE_DATABASE    = 'すみません、データにアクセスできませんでした。'
 	# [Check!] テストコードから参照する必要性があったので大域変数として定義したが、不必要にスコープを広げており、本来すべきではない。
 	#          おそらく他に方法があると考えられるので要調査。
 	$remind_state = INIT_REMIND_MODE
@@ -52,18 +53,12 @@ module ReminderMethods
 
 	private
 		def self.remind_time(message)
-			if (day = REGEX_DAY.match(message)) != nil
-				if day.to_a[0].include?('今日') || day.to_a[0].include?('明日')
-					day_elements = [day.to_a[0]]
-				else
-					day_elements = day.to_a[0].split(/月|\//)
-					if valid_day?(day_elements[0].to_i, day_elements[1].to_i)
-					else
-						return ERROR_MESSAGE_DAY_INVALID
-					end
-				end
-			else 
-				return ERROR_MESSAGE_DAY_EMPTY
+			return ERROR_MESSAGE_DAY_EMPTY if (day = REGEX_DAY.match(message)) == nil
+			if day.to_a[0].include?('今日') || day.to_a[0].include?('明日')
+				day_elements = [day.to_a[0]]
+			else
+				day_elements = day.to_a[0].split(/月|\//)
+				return ERROR_MESSAGE_DAY_INVALID if !(valid_day?(day_elements[0].to_i, day_elements[1].to_i))
 			end
 
 			if (time = REGEX_TIME.match(message)) != nil
@@ -71,6 +66,7 @@ module ReminderMethods
 				if valid_time?(ti_array[0].to_i, ti_array[1].to_i)
 					$remind_state = INIT_REMIND_MODE
 					rem = Reminder.last
+						return ERROR_MESSAGE_DATABASE if rem.nil?
 						if ti_array.length == 1
 							if day_elements[0] == '今日'
 								rem.update(time: DateTime.new(DateTime.now.year,
