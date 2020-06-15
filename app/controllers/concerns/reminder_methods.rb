@@ -69,54 +69,24 @@ module ReminderMethods
 						return ERROR_MESSAGE_DATABASE if rem.nil?
 						if ti_array.length == 1
 							if day_elements[0] == '今日'
-								rem.update(time: DateTime.new(DateTime.now.year,
-																							DateTime.now.month,
-																							DateTime.now.day,
-																							ti_array[0].to_i,
-																							0,
-																							0))
+								rem.update(time: DateTime.new(DateTime.now.year, DateTime.now.month, DateTime.now.day, ti_array[0].to_i, 0, 0))
 								"了解しました。#{day_elements[0]}の#{ti_array[0]}時にまた連絡しますね。"
 							elsif day_elements[0] == '明日'
-								rem.update(time: DateTime.new(DateTime.today.next_day(1).year,
-																							Date.today.next_day(1).month,
-																							Date.today.next_day(1).day,
-																							ti_array[0].to_i,
-																							0,
-																							0))
+								rem.update(time: DateTime.new(DateTime.today.next_day(1).year, Date.today.next_day(1).month, Date.today.next_day(1).day, ti_array[0].to_i, 0, 0))
 								"了解しました。#{day_elements[0]}の#{ti_array[0]}時にまた連絡しますね。"
 							else
-								rem.update(time: DateTime.new(DateTime.now.year,
-																							day_elements[0].to_i,
-																							day_elements[1].to_i,
-																							ti_array[0].to_i,
-																							0,
-																							0))
+								rem.update(time: DateTime.new(DateTime.now.year, day_elements[0].to_i, day_elements[1].to_i, ti_array[0].to_i, 0, 0))
 								"了解しました。#{day_elements[0]}月#{day_elements[1]}日の#{ti_array[0]}時にまた連絡しますね。"
 							end
 						else
 							if day_elements[0] == '今日'
-								rem.update(time: DateTime.new(DateTime.now.year,
-																							DateTime.now.month,
-																							DateTime.now.day,
-																							ti_array[0].to_i,
-																							ti_array[1].to_i,
-																							0))
+								rem.update(time: DateTime.new(DateTime.now.year, DateTime.now.month, DateTime.now.day, ti_array[0].to_i, ti_array[1].to_i, 0))
 								"了解しました。#{day_elements[0]}の#{ti_array[0]}時#{ti_array[1]}分にまた連絡しますね。"
 							elsif day_elements[0] == '明日'
-								rem.update(time: DateTime.new(Date.today.next_day(1).year,
-																							Date.today.next_day(1).month,
-																							Date.today.next_day(1).day,
-																							ti_array[0].to_i,
-																							ti_array[1].to_i,
-																							0))
+								rem.update(time: DateTime.new(Date.today.next_day(1).year, Date.today.next_day(1).month, Date.today.next_day(1).day, ti_array[0].to_i, ti_array[1].to_i, 0))
 								"了解しました。#{day_elements[0]}の#{ti_array[0]}時#{ti_array[1]}分にまた連絡しますね。"
 							else
-								rem.update(time: DateTime.new(DateTime.now.year,
-																							day_elements[0].to_i,
-																							day_elements[1].to_i,
-																							ti_array[0].to_i,
-																							ti_array[1].to_i,
-																							0))
+								rem.update(time: DateTime.new(DateTime.now.year, day_elements[0].to_i, day_elements[1].to_i, ti_array[0].to_i, ti_array[1].to_i, 0))
 								"了解しました。#{day_elements[0]}月#{day_elements[1]}日の#{ti_array[0]}時#{ti_array[1]}分にまた連絡しますね。"
 							end
 						end
