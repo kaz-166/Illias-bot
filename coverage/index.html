@@ -14,7 +14,7 @@
       <img src="./assets/0.12.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2020-06-16T02:55:04+09:00">2020-06-16T02:55:04+09:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2020-06-16T22:18:35+09:00">2020-06-16T22:18:35+09:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="yellow">
-  86.29%
+  86.62%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         3.11
+         3.06
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>445</b> relevant lines,
-    <span class="green"><b>384</b> lines covered</span> and
+    <b>456</b> relevant lines,
+    <span class="green"><b>395</b> lines covered</span> and
     <span class="red"><b>61</b> lines missed. </span>
     (<span class="yellow">
-  86.29%
+  86.62%
 </span>
 )
   </div>
@@ -370,9 +370,9 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#080ca299e5aec6e26378a5c7633264e7d8c5d8d1" class="src_link" title="spec/controllers/concerns/reminder_methods_spec.rb">spec/controllers/concerns/reminder_methods_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">92</td>
-            <td class="cell--number">73</td>
-            <td class="cell--number">73</td>
+            <td class="cell--number">113</td>
+            <td class="cell--number">80</td>
+            <td class="cell--number">80</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
             
@@ -381,9 +381,9 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#f19d12912561837b226c746735b8e7b7e17d9065" class="src_link" title="spec/controllers/concerns/weather_methods_spec.rb">spec/controllers/concerns/weather_methods_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">43</td>
-            <td class="cell--number">29</td>
-            <td class="cell--number">29</td>
+            <td class="cell--number">56</td>
+            <td class="cell--number">33</td>
+            <td class="cell--number">33</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
             
@@ -8441,7 +8441,7 @@
 
             
 
-            <code class="ruby">	context &#39;with a message about greetings&#39; do</code>
+            <code class="ruby">	context &#39;「おはよう」というメッセージを受け取ったとき&#39; do</code>
           </li>
         </div>
       
@@ -8452,7 +8452,7 @@
 
             
 
-            <code class="ruby">		it &#39;should reply 「おはようございます。」&#39; do</code>
+            <code class="ruby">		it &#39;「おはようございます。」と返す&#39; do</code>
           </li>
         </div>
       
@@ -8518,7 +8518,7 @@
 
             
 
-            <code class="ruby">	context &#39;with an invalid message&#39; do</code>
+            <code class="ruby">	context &#39;登録されていないメッセージを受け取ったとき&#39; do</code>
           </li>
         </div>
       
@@ -8529,7 +8529,7 @@
 
             
 
-            <code class="ruby">		it &#39;should not reply&#39; do</code>
+            <code class="ruby">		it &#39;何もリプライを返さない&#39; do</code>
           </li>
         </div>
       
@@ -8659,7 +8659,7 @@
 
             
 
-            <code class="ruby">	context &#39;with a message asking how to use this app&#39; do</code>
+            <code class="ruby">	context &#39;マニュアルの使い方のメッセージを受け取ったとき&#39; do</code>
           </li>
         </div>
       
@@ -8670,7 +8670,7 @@
 
             
 
-            <code class="ruby">		it &#39;should replay message about manual page with link&#39; do</code>
+            <code class="ruby">		it &#39;ユーザズマニュアルのリンクを返す&#39; do</code>
           </li>
         </div>
       
@@ -8748,8 +8748,8 @@
     
 
     <div class="t-line-summary">
-      <b>73</b> relevant lines.
-      <span class="green"><b>73</b> lines covered</span> and
+      <b>80</b> relevant lines.
+      <span class="green"><b>80</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -8800,7 +8800,7 @@
 
             
 
-            <code class="ruby">	describe &#39;method: exec_commamd_reminder&#39; do</code>
+            <code class="ruby">	describe &#39;メソッドexec_commamd_reminderは&#39; do</code>
           </li>
         </div>
       
@@ -8811,7 +8811,7 @@
 
             
 
-            <code class="ruby">		context &#39;with a message demanding to remind&#39; do</code>
+            <code class="ruby">		context &#39;リマインドを要求するメッセージを受け取ったとき&#39; do</code>
           </li>
         </div>
       
@@ -8822,7 +8822,7 @@
 
             
 
-            <code class="ruby">			it &#39;should reply a message for registration of reminding and go next state&#39; do</code>
+            <code class="ruby">			it &#39;ユーザにリマインド内容を要求し、CONTENT_REMIND_MODEに遷移する&#39; do</code>
           </li>
         </div>
       
@@ -8888,7 +8888,7 @@
 
             
 
-            <code class="ruby">			it &#39;should reply a message for registration of reminding and go next state&#39; do</code>
+            <code class="ruby">			it &#39;ユーザにリマインド時間を要求し、TIME_REMIND_MODEに遷移する&#39; do</code>
           </li>
         </div>
       
@@ -8976,7 +8976,7 @@
 
             
 
-            <code class="ruby">		context &#39;with a message about reminding time after registration&#39; do</code>
+            <code class="ruby">		context &#39;日付を「今日」、時間を[XX:XX]形式で受け取ったとき&#39; do</code>
           </li>
         </div>
       
@@ -8987,7 +8987,7 @@
 
             
 
-            <code class="ruby">			it &#39;should reply a message demanding remind-time OK.1&#39; do</code>
+            <code class="ruby">			it &#39;成功コメントをリプライし、INIT_REMIND_MODEに遷移する&#39; do</code>
           </li>
         </div>
       
@@ -9058,546 +9058,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="28">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">			it &#39;should reply a message demanding remind-time OK.2&#39; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="29">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				$remind_state = TIME_REMIND_MODE</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="30">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				Reminder.create(content: &#39;xxx&#39;, time: DateTime.now)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="31">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;明日の5時45分\&quot;&quot;), as: :json</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="32">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;了解しました。明日の5時45分にまた連絡しますね。&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="33">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				expect($remind_state).to eq INIT_REMIND_MODE</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="34">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="35">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">			it &#39;should reply a message demanding remind-time OK.3&#39; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="36">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				$remind_state = TIME_REMIND_MODE</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="37">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				Reminder.create(content: &#39;xxx&#39;, time: DateTime.now)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="38">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;4/12の18:5\&quot;&quot;), as: :json</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="39">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;了解しました。4月12日の18時5分にまた連絡しますね。&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="40">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				expect($remind_state).to eq INIT_REMIND_MODE</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="41">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="42">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">			it &#39;should reply a message demanding remind-time OK.4&#39; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="43">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				$remind_state = TIME_REMIND_MODE</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="44">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				Reminder.create(content: &#39;xxx&#39;, time: DateTime.now)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="45">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;12月12日の22時\&quot;&quot;), as: :json</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="46">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;了解しました。12月12日の22時にまた連絡しますね。&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="47">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				expect($remind_state).to eq INIT_REMIND_MODE</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="48">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="49">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">			it &#39;should reply a message demanding remind-time NG.1&#39; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="50">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				$remind_state = TIME_REMIND_MODE</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="51">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				Reminder.create(content: &#39;xxx&#39;, time: DateTime.now)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="52">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;今日の27時\&quot;&quot;), as: :json</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="53">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;時間がおかしいですよ？&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="54">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				expect($remind_state).to eq TIME_REMIND_MODE</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="55">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="56">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">			it &#39;should reply a message demanding remind-time NG.2&#39; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="57">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				$remind_state = TIME_REMIND_MODE</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="58">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				Reminder.create(content: &#39;xxx&#39;, time: DateTime.now)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="59">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;今日の23:67\&quot;&quot;), as: :json</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="60">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;時間がおかしいですよ？&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="61">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				expect($remind_state).to eq TIME_REMIND_MODE</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="62">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="63">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">			it &#39;should reply a message demanding remind-time NG.3&#39; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="64">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				$remind_state = TIME_REMIND_MODE</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="65">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				Reminder.create(content: &#39;xxx&#39;, time: DateTime.now)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="66">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;12:13\&quot;&quot;), as: :json</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="67">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;日付の指定もお願いします。&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="68">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				expect($remind_state).to eq TIME_REMIND_MODE</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="69">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="70">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">			it &#39;should reply a message demanding remind-time NG.4&#39; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="71">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				$remind_state = TIME_REMIND_MODE</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="72">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				Reminder.create(content: &#39;xxx&#39;, time: DateTime.now)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="73">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;13月67日の12:13\&quot;&quot;), as: :json</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="74">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;日付がおかしいですよ？&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="75">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				expect($remind_state).to eq TIME_REMIND_MODE</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="76">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="77">
+          <li class="never" data-hits="" data-linenumber="28">
             
             
 
@@ -9608,7 +9069,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="78">
+          <li class="never" data-hits="" data-linenumber="29">
             
             
 
@@ -9619,84 +9080,51 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="79">
+          <li class="covered" data-hits="1" data-linenumber="30">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">		context &#39;in reminder integration test&#39; do</code>
+            <code class="ruby">		context &#39;日付を「明日」、時間を[XX:XX]形式で受け取ったとき&#39; do</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="80">
+          <li class="covered" data-hits="1" data-linenumber="31">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">			it &#39;should save a content into database correctly&#39; do</code>
+            <code class="ruby">			it &#39;成功コメントをリプライし、INIT_REMIND_MODEに遷移する&#39; do</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="81">
+          <li class="covered" data-hits="1" data-linenumber="32">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">				$remind_state = INIT_REMIND_MODE</code>
+            <code class="ruby">				$remind_state = TIME_REMIND_MODE</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="82">
+          <li class="covered" data-hits="1" data-linenumber="33">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;リマインド\&quot;&quot;), as: :json</code>
+            <code class="ruby">				Reminder.create(content: &#39;xxx&#39;, time: DateTime.now)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="83">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;了解です。リマインド内容を教えてください。&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="84">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;歯医者\&quot;&quot;), as: :json</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="85">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;了解です。リマインドする時間を教えてください。&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="86">
+          <li class="covered" data-hits="1" data-linenumber="34">
             <span class="hits">1</span>
             
 
@@ -9707,29 +9135,29 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="87">
+          <li class="covered" data-hits="1" data-linenumber="35">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;了解しました。&#39;</code>
+            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;了解しました。明日の5時45分にまた連絡しますね。&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="88">
+          <li class="covered" data-hits="1" data-linenumber="36">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">				expect(Reminder.last.content).to eq &quot;歯医者&quot;</code>
+            <code class="ruby">				expect($remind_state).to eq INIT_REMIND_MODE</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="89">
+          <li class="never" data-hits="" data-linenumber="37">
             
             
 
@@ -9740,7 +9168,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="90">
+          <li class="never" data-hits="" data-linenumber="38">
             
             
 
@@ -9751,7 +9179,810 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="91">
+          <li class="never" data-hits="" data-linenumber="39">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="40">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">		context &#39;日付を[XX/XX]形式、時間を[XX:XX]形式で受け取ったとき&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="41">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">			it &#39;成功コメントをリプライし、INIT_REMIND_MODEに遷移する&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="42">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				$remind_state = TIME_REMIND_MODE</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="43">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				Reminder.create(content: &#39;xxx&#39;, time: DateTime.now)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="44">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;4/12の18:5\&quot;&quot;), as: :json</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="45">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;了解しました。4月12日の18時5分にまた連絡しますね。&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="46">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				expect($remind_state).to eq INIT_REMIND_MODE</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="47">
+            
+            
+
+            
+
+            <code class="ruby">			end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="48">
+            
+            
+
+            
+
+            <code class="ruby">		end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="49">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="50">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">		context &#39;日付を[XX時XX分]形式、時間を[XX時]形式で受け取ったとき&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="51">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">			it &#39;成功コメントをリプライし、INIT_REMIND_MODEに遷移する&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="52">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				$remind_state = TIME_REMIND_MODE</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="53">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				Reminder.create(content: &#39;xxx&#39;, time: DateTime.now)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="54">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;12月12日の22時\&quot;&quot;), as: :json</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="55">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;了解しました。12月12日の22時にまた連絡しますね。&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="56">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				expect($remind_state).to eq INIT_REMIND_MODE</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="57">
+            
+            
+
+            
+
+            <code class="ruby">			end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="58">
+            
+            
+
+            
+
+            <code class="ruby">		end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="59">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="60">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">		context &#39;不正な時間(Hour)が指定されたメッセージを受け取ったとき&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="61">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">			it &#39;失敗コメントをリプライし、状態遷移を維持する&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="62">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">			$remind_state = TIME_REMIND_MODE</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="63">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">			Reminder.create(content: &#39;xxx&#39;, time: DateTime.now)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="64">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">			post :callback, body: generate_posts(&quot;\&quot;今日の27時\&quot;&quot;), as: :json</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="65">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">			expect(assigns(:message)[:text]).to include &#39;時間がおかしいですよ？&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="66">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">			expect($remind_state).to eq TIME_REMIND_MODE</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="67">
+            
+            
+
+            
+
+            <code class="ruby">			end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="68">
+            
+            
+
+            
+
+            <code class="ruby">		end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="69">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="70">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">		context &#39;不正な時間(Minutes)が指定されたメッセージを受け取ったとき&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="71">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">			it &#39;失敗コメントをリプライし、状態遷移を維持する&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="72">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				$remind_state = TIME_REMIND_MODE</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="73">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				Reminder.create(content: &#39;xxx&#39;, time: DateTime.now)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="74">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;今日の23:67\&quot;&quot;), as: :json</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="75">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;時間がおかしいですよ？&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="76">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				expect($remind_state).to eq TIME_REMIND_MODE</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="77">
+            
+            
+
+            
+
+            <code class="ruby">			end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="78">
+            
+            
+
+            
+
+            <code class="ruby">		end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="79">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="80">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">		context &#39;日付が指定されていないメッセージを受け取ったとき&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="81">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">			it &#39;失敗コメントをリプライし、状態遷移を維持する&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="82">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				$remind_state = TIME_REMIND_MODE</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="83">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				Reminder.create(content: &#39;xxx&#39;, time: DateTime.now)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="84">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;12:13\&quot;&quot;), as: :json</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="85">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;日付の指定もお願いします。&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="86">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				expect($remind_state).to eq TIME_REMIND_MODE</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="87">
+            
+            
+
+            
+
+            <code class="ruby">			end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="88">
+            
+            
+
+            
+
+            <code class="ruby">		end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="89">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="90">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">		context &#39;不正な日付が指定されたメッセージを受け取ったとき&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="91">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">			it &#39;失敗コメントをリプライし、状態遷移を維持する&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="92">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				$remind_state = TIME_REMIND_MODE</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="93">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				Reminder.create(content: &#39;xxx&#39;, time: DateTime.now)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="94">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;13月67日の12:13\&quot;&quot;), as: :json</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="95">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;日付がおかしいですよ？&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="96">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				expect($remind_state).to eq TIME_REMIND_MODE</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="97">
+            
+            
+
+            
+
+            <code class="ruby">			end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="98">
+            
+            
+
+            
+
+            <code class="ruby">		end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="99">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="100">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">		context &#39;一連のリマインダ要求メッセージを受け取ったとき&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="101">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">			it &#39;データベースに保存される&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="102">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				$remind_state = INIT_REMIND_MODE</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="103">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;リマインド\&quot;&quot;), as: :json</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="104">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;了解です。リマインド内容を教えてください。&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="105">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;歯医者\&quot;&quot;), as: :json</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="106">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;了解です。リマインドする時間を教えてください。&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="107">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;明日の5時45分\&quot;&quot;), as: :json</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="108">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;了解しました。&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="109">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				expect(Reminder.last.content).to eq &quot;歯医者&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="110">
+            
+            
+
+            
+
+            <code class="ruby">			end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="111">
+            
+            
+
+            
+
+            <code class="ruby">		end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="112">
             
             
 
@@ -9762,7 +9993,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="92">
+          <li class="never" data-hits="" data-linenumber="113">
             
             
 
@@ -9791,8 +10022,8 @@
     
 
     <div class="t-line-summary">
-      <b>29</b> relevant lines.
-      <span class="green"><b>29</b> lines covered</span> and
+      <b>33</b> relevant lines.
+      <span class="green"><b>33</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -9843,7 +10074,7 @@
 
             
 
-            <code class="ruby">	describe &#39;method: exec_commamd_weather&#39; do</code>
+            <code class="ruby">	describe &#39;メソッドexec_commamd_weatherは&#39; do</code>
           </li>
         </div>
       
@@ -9854,7 +10085,7 @@
 
             
 
-            <code class="ruby">		context &#39;with a message about location&#39; do</code>
+            <code class="ruby">		context &#39;天気情報を要求するメッセージを受け取ったとき&#39; do</code>
           </li>
         </div>
       
@@ -9865,7 +10096,7 @@
 
             
 
-            <code class="ruby">			it &#39;should reply message about arbitary Prefs weather&#39; do</code>
+            <code class="ruby">			it &#39;天気情報をリプライする&#39; do</code>
           </li>
         </div>
       
@@ -9903,95 +10134,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="10">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">			it &#39;should reply message about Tokyos weather&#39; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="11">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;東京の天気ってどうなってるー？\&quot;&quot;), as: :json</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="12">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;現在の東京都の天気は&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="13">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="14">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">			it &#39;should reply message about Osakas weather&#39; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="15">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;大阪の天気が知りたいなぁ\&quot;&quot;), as: :json</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="16">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;現在の大阪府の天気は&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="17">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="18">
+          <li class="never" data-hits="" data-linenumber="10">
             
             
 
@@ -10002,84 +10145,62 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="19">
+          <li class="never" data-hits="" data-linenumber="11">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="12">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">		context &#39;with a message about time&#39; do</code>
+            <code class="ruby">		context &#39;東京都の天気情報を要求するメッセージを受け取ったとき&#39; do</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="20">
+          <li class="covered" data-hits="1" data-linenumber="13">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">			it &#39;should reply message about arbitary Prefs weather of 1 hours after&#39; do</code>
+            <code class="ruby">			it &#39;東京都の天気情報をリプライする&#39; do</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="21">
-            
-            
-
-            
-
-            <code class="ruby">				# 全角半角を区別しない</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="22">
+          <li class="covered" data-hits="1" data-linenumber="14">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;1時間後の天気ってどうなんだろう？？\&quot;&quot;), as: :json</code>
+            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;東京の天気ってどうなってるー？\&quot;&quot;), as: :json</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="23">
+          <li class="covered" data-hits="1" data-linenumber="15">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;1時間後の千葉県の天気は&#39;</code>
+            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;現在の東京都の天気は&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="24">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;１時間後の天気ってどうなんだろう？？\&quot;&quot;), as: :json</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="25">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;1時間後の千葉県の天気は&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="26">
+          <li class="never" data-hits="" data-linenumber="16">
             
             
 
@@ -10090,13 +10211,123 @@
         </div>
       
         <div>
+          <li class="never" data-hits="" data-linenumber="17">
+            
+            
+
+            
+
+            <code class="ruby">		end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="18">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="19">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">		context &#39;大阪府の天気情報を要求するメッセージを受け取ったとき&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="20">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">			it &#39;大阪府の天気情報をリプライする&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="21">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;大阪の天気が知りたいなぁ\&quot;&quot;), as: :json</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="22">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;現在の大阪府の天気は&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="23">
+            
+            
+
+            
+
+            <code class="ruby">			end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="24">
+            
+            
+
+            
+
+            <code class="ruby">		end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="25">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="26">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">		context &#39;1時間後の天気情報を要求するメッセージを受け取ったとき&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
           <li class="covered" data-hits="1" data-linenumber="27">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">			it &#39;should reply message about Tokyos weather of 2 hours after&#39; do</code>
+            <code class="ruby">			it &#39;時間後の天気情報をリプライする&#39; do</code>
           </li>
         </div>
       
@@ -10118,7 +10349,7 @@
 
             
 
-            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;2時間後の東京の天気ってどうなんだろう？？\&quot;&quot;), as: :json</code>
+            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;1時間後の天気ってどうなんだろう？？\&quot;&quot;), as: :json</code>
           </li>
         </div>
       
@@ -10129,7 +10360,7 @@
 
             
 
-            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;2時間後の東京都の天気は&#39;</code>
+            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;1時間後の千葉県の天気は&#39;</code>
           </li>
         </div>
       
@@ -10140,7 +10371,7 @@
 
             
 
-            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;２時間後の東京の天気ってどうなんだろう？？\&quot;&quot;), as: :json</code>
+            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;１時間後の天気ってどうなんだろう？？\&quot;&quot;), as: :json</code>
           </li>
         </div>
       
@@ -10151,7 +10382,7 @@
 
             
 
-            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;2時間後の東京都の天気は&#39;</code>
+            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;1時間後の千葉県の天気は&#39;</code>
           </li>
         </div>
       
@@ -10167,13 +10398,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="34">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="34">
+            
             
 
             
 
-            <code class="ruby">			it &#39;should reply message about Mies weather of 3 hours after&#39; do</code>
+            <code class="ruby">		end</code>
           </li>
         </div>
       
@@ -10184,7 +10415,7 @@
 
             
 
-            <code class="ruby">				# 全角半角を区別しない</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -10195,7 +10426,7 @@
 
             
 
-            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;3時間後の三重の天気ってどうなんだろう？？\&quot;&quot;), as: :json</code>
+            <code class="ruby">		context &#39;2時間後の東京の天気情報を要求するメッセージを受け取ったとき&#39; do</code>
           </li>
         </div>
       
@@ -10206,18 +10437,18 @@
 
             
 
-            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;3時間後の三重県の天気は&#39;</code>
+            <code class="ruby">			it &#39;2時間後の東京の天気情報をリプライする&#39; do</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="38">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="38">
+            
             
 
             
 
-            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;３時間後の三重の天気ってどうなんだろう？？\&quot;&quot;), as: :json</code>
+            <code class="ruby">				# 全角半角を区別しない</code>
           </li>
         </div>
       
@@ -10228,12 +10459,45 @@
 
             
 
-            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;3時間後の三重県の天気は&#39;</code>
+            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;2時間後の東京の天気ってどうなんだろう？？\&quot;&quot;), as: :json</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="40">
+          <li class="covered" data-hits="1" data-linenumber="40">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;2時間後の東京都の天気は&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="41">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;２時間後の東京の天気ってどうなんだろう？？\&quot;&quot;), as: :json</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="42">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;2時間後の東京都の天気は&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="43">
             
             
 
@@ -10244,18 +10508,128 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="41">
+          <li class="never" data-hits="" data-linenumber="44">
             
             
 
             
 
-            <code class="ruby">		end </code>
+            <code class="ruby">		end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="42">
+          <li class="never" data-hits="" data-linenumber="45">
+            
+            
+
+            
+
+            <code class="ruby">		</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="46">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">		context &#39;3時間後の三重の天気情報を要求するメッセージを受け取ったとき&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="47">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">			it &#39;3時間後の三重の天気情報をリプライする&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="48">
+            
+            
+
+            
+
+            <code class="ruby">				# 全角半角を区別しない</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="49">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;3時間後の三重の天気ってどうなんだろう？？\&quot;&quot;), as: :json</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="50">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;3時間後の三重県の天気は&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="51">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				post :callback, body: generate_posts(&quot;\&quot;３時間後の三重の天気ってどうなんだろう？？\&quot;&quot;), as: :json</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="52">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				expect(assigns(:message)[:text]).to include &#39;3時間後の三重県の天気は&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="53">
+            
+            
+
+            
+
+            <code class="ruby">			end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="54">
+            
+            
+
+            
+
+            <code class="ruby">		end		</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="55">
             
             
 
@@ -10266,7 +10640,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="43">
+          <li class="never" data-hits="" data-linenumber="56">
             
             
 
@@ -10358,7 +10732,7 @@
 
             
 
-            <code class="ruby">  describe &#39;POST CALLBACK API&#39; do</code>
+            <code class="ruby">  describe &#39;#callbackが&#39; do</code>
           </li>
         </div>
       
@@ -10369,7 +10743,7 @@
 
             
 
-            <code class="ruby">    context &#39;with any message&#39; do</code>
+            <code class="ruby">    context &#39;メッセージを受け取ったとき&#39; do</code>
           </li>
         </div>
       
@@ -10380,7 +10754,7 @@
 
             
 
-            <code class="ruby">      it &#39;should be success&#39; do</code>
+            <code class="ruby">      it &#39;通信成功であること&#39; do</code>
           </li>
         </div>
       
@@ -10607,7 +10981,7 @@
 
             
 
-            <code class="ruby">  it &#39;should be succeed in create&#39; do</code>
+            <code class="ruby">  it &#39;データの作成が成功すること&#39; do</code>
           </li>
         </div>
       
@@ -10651,7 +11025,7 @@
 
             
 
-            <code class="ruby">  it &#39;should be failed in an empty content&#39; do</code>
+            <code class="ruby">  it &#39;contextカラムは空ではいけない&#39; do</code>
           </li>
         </div>
       
@@ -10695,7 +11069,7 @@
 
             
 
-            <code class="ruby">  it &#39;should be failed in an empty time&#39; do</code>
+            <code class="ruby">  it &#39;timeカラムは空では行けない&#39; do</code>
           </li>
         </div>
       

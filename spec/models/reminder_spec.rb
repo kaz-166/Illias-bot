@@ -2,15 +2,15 @@ require 'rails_helper'
 require 'date'
 
 RSpec.describe Reminder, type: :model do
-  it 'should be succeed in create' do
+  it 'データの作成が成功すること' do
     rem = Reminder.new(content: "a", time: DateTime.now)
     expect(rem.save).to eq true
   end
-  it 'should be failed in an empty content' do
+  it 'contextカラムは空ではいけない' do
     rem = Reminder.new(content: "", time: DateTime.now)
     expect(rem.save).to eq false
   end
-  it 'should be failed in an empty time' do
+  it 'timeカラムは空では行けない' do
     rem = Reminder.new(content: "a", time: "")
     expect(rem.save).to eq false
   end
