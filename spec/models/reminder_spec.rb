@@ -10,7 +10,7 @@ RSpec.describe Reminder, type: :model do
     rem = Reminder.new(content: "", time: DateTime.now)
     expect(rem.save).to eq false
   end
-  it 'timeカラムは空では行けない' do
+  it 'timeカラムは空ではいけない' do
     rem = Reminder.new(content: "a", time: "")
     expect(rem.save).to eq false
   end
