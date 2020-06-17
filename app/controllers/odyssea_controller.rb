@@ -1,7 +1,9 @@
 class OdysseaController < ApplicationController
 	
 	def callback
-		render json: { status: 'SUCCESS', message: 'テストです。'}
+		message = params[:text]
+		reply = parse_command(message)
+		render json: { status: 'SUCCESS', message: reply }
 	end
 
 	private
