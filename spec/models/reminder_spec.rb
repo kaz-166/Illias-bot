@@ -15,5 +15,9 @@ RSpec.describe Reminder, type: :model do
       rem = Reminder.new(content: "a", time: "")
       expect(rem.save).to eq false
     end
+    # it '過去の時間は指定できない' do
+    #  rem = Reminder.new(content: "a", time: Time.now.prev_day(1))
+    #  expect(rem.save).to eq false
+    # end
   end
 end
