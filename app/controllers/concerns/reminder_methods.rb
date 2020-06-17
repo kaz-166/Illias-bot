@@ -55,10 +55,21 @@ module ReminderMethods
 	private
 		def self.remind_time(message)
 			return ERROR_MESSAGE_DAY_EMPTY if (day = REGEX_DAY.match(message)) == nil
-			if day.to_a[0].include?('今日') || day.to_a[0].include?('明日')
+			if day.to_a[0].include?('今日')
 				day_elements = [day.to_a[0]]
+				year = Time.now.year.to_i
+				month = Time.now.month.to_i
+				day = Time.now.day.to_i
+			elsif day.to_a[0].include?('明日')
+				day_elements = [day.to_a[0]]
+				year = Time.now.next_day(1).year.to_i
+				month = Time.now.next_day(1).month.to_i
+				day = Time.now.next_day(1).day.to_i
 			else
 				day_elements = day.to_a[0].split(/月|\//)
+				year = Time.now.year.to_i
+				month = day_elements[0].to_i
+				day = day_elements[1].to_i
 				return ERROR_MESSAGE_DAY_INVALID if !(valid_day?(day_elements[0].to_i, day_elements[1].to_i))
 			end
 
@@ -69,31 +80,19 @@ module ReminderMethods
 					rem = Reminder.last
 						return ERROR_MESSAGE_DATABASE if rem.nil?
 						if ti_array.length == 1		# 分の指定がない場合
-							if day_elements[0] == '今日'
-								is_updete_succeed = rem.update(time: Time.new(Time.now.year.to_i, Time.now.month.to_i, Time.now.day.to_i, ti_array[0].to_i, 0, 0))
-								return ERROR_MESSAGE_DATABASE unless is_updete_succeed
-								"了解しました。#{day_elements[0]}の#{ti_array[0]}時にまた連絡しますね。"
-							elsif day_elements[0] == '明日'
-								is_updete_succeed = rem.update(time: Time.new(Time.now.next_day(1).year.to_i, Time.now.next_day(1).month.to_i, Time.now.next_day(1).day.to_i, ti_array[0].to_i, 0, 0))
-								return ERROR_MESSAGE_DATABASE unless is_updete_succeed
+							is_updete_succeed = rem.update(time: Time.new(year, month, day, ti_array[0].to_i, 0, 0))
+							return ERROR_MESSAGE_DATABASE unless is_updete_succeed
+							if (day_elements[0] == '今日') || (day_elements[0] == '明日')		
 								"了解しました。#{day_elements[0]}の#{ti_array[0]}時にまた連絡しますね。"
 							else
-								is_updete_succeed = rem.update(time: Time.new(Time.now.year.to_i, day_elements[0].to_i, day_elements[1].to_i, ti_array[0].to_i, 0, 0))
-								return ERROR_MESSAGE_DATABASE unless is_updete_succeed
 								"了解しました。#{day_elements[0]}月#{day_elements[1]}日の#{ti_array[0]}時にまた連絡しますね。"
 							end
 						else
-							if day_elements[0] == '今日'
-								is_updete_succeed = rem.update(time: Time.new(Time.now.year.to_i, Time.now.month.to_i, Time.now.day.to_i, ti_array[0].to_i, ti_array[1].to_i, 0))
-								return ERROR_MESSAGE_DATABASE unless is_updete_succeed
-								"了解しました。#{day_elements[0]}の#{ti_array[0]}時#{ti_array[1]}分にまた連絡しますね。"
-							elsif day_elements[0] == '明日'
-								is_updete_succeed = rem.update(time: Time.new(Time.now.next_day(1).year.to_i, Time.now.next_day(1).month.to_i, Time.now.next_day(1).day.to_i, ti_array[0].to_i, ti_array[1].to_i, 0))
-								return ERROR_MESSAGE_DATABASE unless is_updete_succeed
+							is_updete_succeed = rem.update(time: Time.new(year, month, day, ti_array[0].to_i, ti_array[1].to_i, 0))
+							return ERROR_MESSAGE_DATABASE unless is_updete_succeed
+							if (day_elements[0] == '今日') || (day_elements[0] == '明日')
 								"了解しました。#{day_elements[0]}の#{ti_array[0]}時#{ti_array[1]}分にまた連絡しますね。"
 							else
-								is_updete_succeed = rem.update(time: Time.new(Time.now.year, day_elements[0].to_i, day_elements[1].to_i, ti_array[0].to_i, ti_array[1].to_i, 0))
-								return ERROR_MESSAGE_DATABASE unless is_updete_succeed
 								"了解しました。#{day_elements[0]}月#{day_elements[1]}日の#{ti_array[0]}時#{ti_array[1]}分にまた連絡しますね。"
 							end
 						end
