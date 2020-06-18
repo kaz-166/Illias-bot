@@ -10,13 +10,14 @@ module WeatherMethods
 
 	WEATHER = 'weather'
 	TEMP = 'temp'
+	ERROR_MASSEAGE_WEATHER = "すみません、問題が発生したようです..."
 
 	def self.matching?(message)
 		message.include?('天気') ? true : false
 	end
 
-	def self.exec_command_weather(message) # コマンド要求時の天気情報を取得しメッセージを返す
-		generate_response_message(message)
+	def self.exec_command_weather(location, hour) # コマンド要求時の天気情報を取得しメッセージを返す
+		generate_response_message(location, hour)
 	end
 
 	def self.alert # 悪天候の発生をを検知してユーザに通知
@@ -72,15 +73,15 @@ module WeatherMethods
 			JSON.parse(response.read)
 		end
 
-		def self.generate_response_message(message) # Line Botで返答する文章を生成
-			location = extract_location(message)
+		def self.generate_response_message(location, hour) # Line Botで返答する文章を生成
 			response = callback_open_weather_map(location)
 			# callback_open_weather_mapで取得したJSONから天候情報を抽出する
-			hour, hour_message = extract_hours(message)
 			temp    = extract_from_json(TEMP, hour, response)
 			weather = extract_from_json(WEATHER, hour, response)
-			return_with_exception if ((temp == nil) || (weather == nil))
-			location = location_to_ja(location)	# リプライ用に位置情報を日本語に変換
+			# リプライ用に位置情報を日本語に変換
+			location = location_to_ja(location)	
+			hour_message = hour_to_ja(hour)
+			return_with_exception if ((temp == nil) || (weather == nil) || (location == nil) ||(hour_message == nil))
 			"#{hour_message}の#{location}の天気は#{weather}。\n気温は#{temp}℃です。"
 		end
 
@@ -95,48 +96,20 @@ module WeatherMethods
 				nil
 			end
 		end
-		
-		# @message [String]
-		# @output [Integer, String]
-		def self.extract_hours(message)
-			if    message.include?('1時間後') || message.include?('１時間後')
-				return 1, '1時間後'
-			elsif message.include?('2時間後') || message.include?('２時間後')
-				return 2, '2時間後'
-			elsif message.include?('3時間後') || message.include?('３時間後')
-				return 3, '3時間後'
-			elsif message.include?('4時間後') || message.include?('４時間後')
-				return 4, '4時間後'
-			else
-				return 0, '現在'
-			end
-		end
 
-		def self.extract_location(message)
-			if message.include?('東京')
-				'Tokyo'
-			elsif message.include?('千葉')
-				'Chiba'
-			elsif message.include?('神奈川')
-				'Kanagawa'
-			elsif message.include?('埼玉')
-				'Saitama'
-			elsif message.include?('茨城')
-				'Ibaraki'
-			elsif message.include?('愛知')
-				'Aichi'
-			elsif message.include?('三重')
-				'Mie'
-			elsif message.include?('栃木')
-				'Tochigi'
-			elsif message.include?('福島')
-				'Fukushima'
-			elsif message.include?('大阪')
-				'Osaka'
-			elsif message.include?('京都')
-				'Kyoto'
+		def self.hour_to_ja(hour)
+			if    hour == 0
+				'現在'
+			elsif hour == 1
+				'1時間後'
+			elsif hour == 2
+				'2時間後'
+			elsif hour == 3
+				'3時間後'
+			elsif hour == 4
+				'4時間後'
 			else
-				'Chiba'
+				nil
 			end
 		end
 
@@ -162,7 +135,7 @@ module WeatherMethods
 			elsif location == 'Osaka'
 				'大阪府'
 			else
-				'東京都'
+				nil
 			end
 		end
 
@@ -183,7 +156,7 @@ module WeatherMethods
 		end
 
 		def self.return_with_exception
-			return 'すみません。問題が発生したようです...'
+			return ERROR_MASSEAGE_WEATHER
 		end
 
 end

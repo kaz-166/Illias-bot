@@ -52,6 +52,9 @@ module ReminderMethods
 		end
 	end
 
+	def self.remind
+	end
+
 	private
 		def self.remind_time(message)
 			return ERROR_MESSAGE_DAY_EMPTY if (day = REGEX_DAY.match(message)) == nil
