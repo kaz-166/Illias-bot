@@ -91,7 +91,7 @@ module WeatherMethods
 
 		def self.generate_response_message(location, hour) # Line Botで返答する文章を生成
 			location_ja = location_to_ja(location.capitalize)	
-			return Settings.status.invalid_params, "そんな地名はありませんよ？" if location == nil
+			return Settings.status.invalid_params, "そんな地名はありませんよ？" if location_ja == nil
 			hour_message = hour_to_ja(hour.to_i)
 			return Settings.status.invalid_params, "その時間までの予測はできないです..." if hour_message == nil
 
