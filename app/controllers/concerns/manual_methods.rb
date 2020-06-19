@@ -13,8 +13,7 @@ module ManualMethods
 	extend ActiveSupport::Concern
 
 	def self.exec_commamd_manual
-		"ユーザズマニュアルのリンクを貼っておきますね。\n" +
-        'https://ilias-bot.herokuapp.com/manual'
+		return 'SUCCESS', "ユーザズマニュアルのリンクを貼っておきますね。\n" + 'https://ilias-bot.herokuapp.com/manual'
 	end
 
 end

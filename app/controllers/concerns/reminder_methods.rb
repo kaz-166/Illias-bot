@@ -34,21 +34,21 @@ module ReminderMethods
 		case ($remind_state)
 		when INIT_REMIND_MODE
 			$remind_state = CONTENT_REMIND_MODE
-			'了解です。リマインド内容を教えてください。'
+			return 'SUCCESS', '了解です。リマインド内容を教えてください。'
 		when CONTENT_REMIND_MODE
 			# TimeはTIME_REMIND_MODEステートで更新されるのでここでは仮の値を入れている
 			rem = Reminder.new(content: message, time: DateTime.now)
 			if rem.save
 				$remind_state = TIME_REMIND_MODE
-				'了解です。リマインドする時間を教えてください。'
+				return 'SUCCESS', '了解です。リマインドする時間を教えてください。'
 			else
 				$remind_state = INIT_REMIND_MODE
-				ERROR_MESSAGE_DATABASE
+				return 'DATABASE_ERROR', ERROR_MESSAGE_DATABASE
 			end
 		when TIME_REMIND_MODE
-			remind_time(message)
+			return remind_time(message)
 		else
-			'不正な分岐です。'
+			return 'INTERNAL_ERROR', '不正な分岐です。'
 		end
 	end
 
@@ -57,7 +57,7 @@ module ReminderMethods
 
 	private
 		def self.remind_time(message)
-			return ERROR_MESSAGE_DAY_EMPTY if (day = REGEX_DAY.match(message)) == nil
+			return 'PARAMS_ERROR', ERROR_MESSAGE_DAY_EMPTY if (day = REGEX_DAY.match(message)) == nil
 			if day.to_a[0].include?('今日')
 				day_elements = [day.to_a[0]]
 				year = Time.now.year.to_i
@@ -73,7 +73,7 @@ module ReminderMethods
 				year = Time.now.year.to_i
 				month = day_elements[0].to_i
 				day = day_elements[1].to_i
-				return ERROR_MESSAGE_DAY_INVALID if !(valid_day?(day_elements[0].to_i, day_elements[1].to_i))
+				return 'PARAMS_ERROR', ERROR_MESSAGE_DAY_INVALID if !(valid_day?(day_elements[0].to_i, day_elements[1].to_i))
 			end
 
 			if (time = REGEX_TIME.match(message)) != nil
@@ -81,29 +81,29 @@ module ReminderMethods
 				if valid_time?(ti_array[0].to_i, ti_array[1].to_i)
 					$remind_state = INIT_REMIND_MODE
 					rem = Reminder.last
-						return ERROR_MESSAGE_DATABASE if rem.nil?
+						return 'DATABASE_ERROR', ERROR_MESSAGE_DATABASE if rem.nil?
 						if ti_array.length == 1		# 分の指定がない場合
 							is_updete_succeed = rem.update(time: Time.new(year, month, day, ti_array[0].to_i, 0, 0))
-							return ERROR_MESSAGE_DATABASE unless is_updete_succeed
+							return 'DATABASE_ERROR', ERROR_MESSAGE_DATABASE unless is_updete_succeed
 							if (day_elements[0] == '今日') || (day_elements[0] == '明日')		
-								"了解しました。#{day_elements[0]}の#{ti_array[0]}時にまた連絡しますね。"
+								return 'SUCCESS', "了解しました。#{day_elements[0]}の#{ti_array[0]}時にまた連絡しますね。"
 							else
-								"了解しました。#{day_elements[0]}月#{day_elements[1]}日の#{ti_array[0]}時にまた連絡しますね。"
+								return 'SUCCESS', "了解しました。#{day_elements[0]}月#{day_elements[1]}日の#{ti_array[0]}時にまた連絡しますね。"
 							end
 						else
 							is_updete_succeed = rem.update(time: Time.new(year, month, day, ti_array[0].to_i, ti_array[1].to_i, 0))
-							return ERROR_MESSAGE_DATABASE unless is_updete_succeed
+							return 'DATABASE_ERROR', ERROR_MESSAGE_DATABASE unless is_updete_succeed
 							if (day_elements[0] == '今日') || (day_elements[0] == '明日')
-								"了解しました。#{day_elements[0]}の#{ti_array[0]}時#{ti_array[1]}分にまた連絡しますね。"
+								return 'SUCCESS', "了解しました。#{day_elements[0]}の#{ti_array[0]}時#{ti_array[1]}分にまた連絡しますね。"
 							else
-								"了解しました。#{day_elements[0]}月#{day_elements[1]}日の#{ti_array[0]}時#{ti_array[1]}分にまた連絡しますね。"
+								return 'SUCCESS', "了解しました。#{day_elements[0]}月#{day_elements[1]}日の#{ti_array[0]}時#{ti_array[1]}分にまた連絡しますね。"
 							end
 						end
 				else
-					return ERROR_MESSAGE_TIME
+					return 'PARAMS_ERROR', ERROR_MESSAGE_TIME
 				end
 			else
-				return ERROR_MESSAGE_TIME
+				return 'PARAMS_ERROR', ERROR_MESSAGE_TIME
 			end
 		end
 

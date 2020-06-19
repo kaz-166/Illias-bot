@@ -25,7 +25,7 @@ module WeatherMethods
 	ERROR_MASSEAGE_WEATHER = "すみません、問題が発生したようです..."
 
 	def self.exec_command_weather(params) # コマンド要求時の天気情報を取得しメッセージを返す
-		generate_response_message(params['location'], params['hour'])
+		return generate_response_message(params['location'], params['hour'])
 	end
 
 	def self.alert # 悪天候の発生をを検知してユーザに通知
@@ -90,7 +90,7 @@ module WeatherMethods
 			location = location_to_ja(location)	
 			hour_message = hour_to_ja(hour)
 			return_with_exception if ((temp == nil) || (weather == nil) || (location == nil) ||(hour_message == nil))
-			"#{hour_message}の#{location}の天気は#{weather}。\n気温は#{temp}℃です。"
+			return 'SUCCESS', "#{hour_message}の#{location}の天気は#{weather}。\n気温は#{temp}℃です。"
 		end
 
 		def self.extract_from_json(element, hours, response)
@@ -164,7 +164,7 @@ module WeatherMethods
 		end
 
 		def self.return_with_exception
-			return ERROR_MASSEAGE_WEATHER
+			return 'INTERNAL_ERROR', ERROR_MASSEAGE_WEATHER
 		end
 
 end

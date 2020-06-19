@@ -66,7 +66,7 @@ class LinebotController < ApplicationController
       else
       end
 
-      MethodSelecter.exec(params)
+      MethodSelecter.exec(params)['message']
     end
 
     def extract_weather_hour_params(message)

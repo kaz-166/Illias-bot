@@ -13,7 +13,7 @@ module GreetingMethods
   extend ActiveSupport::Concern
 
 	def self.exec_command_greeting
-		'おはようございます。'
+		return 'SUCCESS', 'おはようございます。'
 	end
 
 end
