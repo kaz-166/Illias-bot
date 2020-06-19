@@ -86,7 +86,7 @@ module WeatherMethods
 		end
 
 		def self.generate_response_message(location, hour) # Line Botで返答する文章を生成
-			location = location_to_ja(location.capitalize)	
+			location_ja = location_to_ja(location.capitalize)	
 			return Settings.status.invalid_params, "そんな地名はありませんよ？" if location == nil
 			hour_message = hour_to_ja(hour.to_i)
 			return Settings.status.invalid_params, "その時間までの予測はできないです..." if hour_message == nil
@@ -100,7 +100,7 @@ module WeatherMethods
 			temp    = extract_from_json(TEMP, hour.to_i, response)
 			weather = extract_from_json(WEATHER, hour.to_i, response)
 			
-			return Settings.status.success, "#{hour_message}の#{location}の天気は#{weather}。\n気温は#{temp}℃です。"
+			return Settings.status.success, "#{hour_message}の#{location_ja}の天気は#{weather}。\n気温は#{temp}℃です。"
 		end
 
 		def self.extract_from_json(element, hours, response)
