@@ -86,12 +86,12 @@ module WeatherMethods
 		end
 
 		def self.generate_response_message(location, hour) # Line Botで返答する文章を生成
-			response = callback_open_weather_map(location)
+			response = callback_open_weather_map(location.capitalize)
 			# callback_open_weather_mapで取得したJSONから天候情報を抽出する
 			temp    = extract_from_json(TEMP, hour.to_i, response)
 			weather = extract_from_json(WEATHER, hour.to_i, response)
 			# リプライ用に位置情報を日本語に変換
-			location = location_to_ja(location)	
+			location = location_to_ja(location.capitalize)	
 			hour_message = hour_to_ja(hour.to_i)
 			return_with_exception if ((temp == nil) || (weather == nil) || (location == nil) ||(hour_message == nil))
 			return Settings.status.success, "#{hour_message}の#{location}の天気は#{weather}。\n気温は#{temp}℃です。"
