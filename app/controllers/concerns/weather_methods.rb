@@ -1,6 +1,10 @@
 # ------------------------------------------
-# 機能名:  天気情報
-# 機能ID:  3
+# @name:  天気情報
+# @id:  3
+# ------------------------------------------
+# @abstract
+# 天気情報を返します。
+# 天気情報の取得はOpenWeatherMapのAPIを使用しています。
 # ------------------------------------------
 # @params [JSON]
 # location: 取得したい天気情報の地名 
@@ -90,7 +94,7 @@ module WeatherMethods
 			location = location_to_ja(location)	
 			hour_message = hour_to_ja(hour)
 			return_with_exception if ((temp == nil) || (weather == nil) || (location == nil) ||(hour_message == nil))
-			return 'SUCCESS', "#{hour_message}の#{location}の天気は#{weather}。\n気温は#{temp}℃です。"
+			return Settings.status.success, "#{hour_message}の#{location}の天気は#{weather}。\n気温は#{temp}℃です。"
 		end
 
 		def self.extract_from_json(element, hours, response)
@@ -164,7 +168,7 @@ module WeatherMethods
 		end
 
 		def self.return_with_exception
-			return 'INTERNAL_ERROR', ERROR_MASSEAGE_WEATHER
+			return Settings.status.internal_error, ERROR_MASSEAGE_WEATHER
 		end
 
 end

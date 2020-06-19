@@ -1,6 +1,9 @@
 # ------------------------------------------
-# 機能名:  マニュアル
-# 機能ID:  2
+# @name:  マニュアル
+# @id:  2
+# ------------------------------------------
+# @abstract
+# ユーザーズマニュアルのリンクを返します。
 # ------------------------------------------
 # @params
 # なし
@@ -13,7 +16,7 @@ module ManualMethods
 	extend ActiveSupport::Concern
 
 	def self.exec_commamd_manual
-		return 'SUCCESS', "ユーザズマニュアルのリンクを貼っておきますね。\n" + 'https://ilias-bot.herokuapp.com/manual'
+		return Settings.status.success, "ユーザズマニュアルのリンクを貼っておきますね。\n" + 'https://ilias-bot.herokuapp.com/manual'
 	end
 
 end

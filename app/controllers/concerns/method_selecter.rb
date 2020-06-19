@@ -3,7 +3,7 @@ module MethodSelecter
 
     # @params[Hash]
     def self.exec(params)
-        results = {'status' => 'SUCCESS', 'message' => ''}
+        results = {'status' => Settings.status.success, 'message' => ''}
         if    params['id'] == '1'
             results['status'],  results['message'] = GreetingMethods.exec_command_greeting
         elsif params['id'] == '2'

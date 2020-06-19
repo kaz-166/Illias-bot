@@ -1,0 +1,5 @@
+status:
+  success: 'SUCCESS'
+  internal_error: 'INTERNAL ERROR'
+  database_error: 'DATABASE ERROR'
+  invalid_params: 'INVALID PARAMS ERROR'

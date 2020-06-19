@@ -1,6 +1,9 @@
 # ------------------------------------------
-# 機能名:  挨拶
-# 機能ID:  1
+# @name:  挨拶
+# @id:  1
+# ------------------------------------------
+# @abstract
+# 挨拶文を返します。
 # ------------------------------------------
 # @params
 # なし
@@ -13,7 +16,7 @@ module GreetingMethods
   extend ActiveSupport::Concern
 
 	def self.exec_command_greeting
-		return 'SUCCESS', 'おはようございます。'
+		return Settings.status.success, 'おはようございます。'
 	end
 
 end
