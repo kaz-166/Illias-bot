@@ -13,6 +13,7 @@
 # @returns [JSON]
 # status:  処理結果
 # message: 応答メッセージ文字列
+# expression: 表情コード
 # ------------------------------------------
 module WeatherMethods
   extend ActiveSupport::Concern
@@ -30,7 +31,7 @@ module WeatherMethods
 
 	def self.exec_command_weather(params) # コマンド要求時の天気情報を取得しメッセージを返す
 		if (params['location'] == nil) || (params['hour'] == nil)
-			return Settings.status.invalid_params, 'ん？何かルールを守っていないようですね...？'
+			return Settings.status.invalid_params, 'ん？何かルールを守っていないようですね...？', Settings.expression.angry
 		else
 			return generate_response_message(params['location'], params['hour'])
 		end
@@ -91,14 +92,17 @@ module WeatherMethods
 
 		def self.generate_response_message(location, hour) # Line Botで返答する文章を生成
 			location_ja = location_to_ja(location.capitalize)	
-			return Settings.status.invalid_params, "そんな地名はありませんよ？" if location_ja == nil
+			if location_ja == nil
+				return Settings.status.invalid_params, "そんな地名はありませんよ？", Settings.expression.angry 
+			end
 			hour_message = hour_to_ja(hour.to_i)
-			return Settings.status.invalid_params, "その時間までの予測はできないです..." if hour_message == nil
-
+			if hour_message == nil
+				return Settings.status.invalid_params, "その時間までの予測はできないです...", Settings.expression.confused
+			end
 			begin
 				response = callback_open_weather_map(location.capitalize)
 			rescue
-				return Settings.status.api_callback_error, "天気情報が取得できませんでした。"
+				return Settings.status.api_callback_error, "天気情報が取得できませんでした。", Settings.expression.confused
 			end
 			# callback_open_weather_mapで取得したJSONから天候情報を抽出する
 			temp    = extract_from_json(TEMP, hour.to_i, response)
@@ -176,9 +180,4 @@ module WeatherMethods
 				nil
 			end
 		end
-
-		def self.return_with_exception
-			return Settings.status.internal_error, ERROR_MASSEAGE_WEATHER
-		end
-
 end

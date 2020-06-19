@@ -4,3 +4,10 @@ status:
   database_error: 'DATABASE ERROR'
   api_callback_error: 'API CALLBACK ERROR'
   invalid_params: 'INVALID PARAMS ERROR'
+
+expression:
+  normal: 'normal'
+  happy: 'happy'
+  angry: 'angry'
+  confused: 'confused'
+  suprised: 'surprised'

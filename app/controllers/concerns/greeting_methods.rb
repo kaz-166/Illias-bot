@@ -16,7 +16,7 @@ module GreetingMethods
   extend ActiveSupport::Concern
 
 	def self.exec_command_greeting
-		return Settings.status.success, 'おはようございます。'
+		return Settings.status.success, 'おはようございます。', Settings.expression.happy
 	end
 
 end
