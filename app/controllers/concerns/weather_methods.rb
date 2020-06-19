@@ -24,8 +24,8 @@ module WeatherMethods
 	TEMP = 'temp'
 	ERROR_MASSEAGE_WEATHER = "すみません、問題が発生したようです..."
 
-	def self.exec_command_weather(location, hour) # コマンド要求時の天気情報を取得しメッセージを返す
-		generate_response_message(location, hour)
+	def self.exec_command_weather(params) # コマンド要求時の天気情報を取得しメッセージを返す
+		generate_response_message(params['location'], params['hour'])
 	end
 
 	def self.alert # 悪天候の発生をを検知してユーザに通知
