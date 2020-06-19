@@ -1,3 +1,15 @@
+# ------------------------------------------
+# 機能名:  天気情報
+# 機能ID:  3
+# ------------------------------------------
+# @params [JSON]
+# location: 取得したい天気情報の地名 
+# hour:     X時間後の天気情報を取得する。0～4までの指定が可能
+# ------------------------------------------
+# @returns [JSON]
+# status:  処理結果
+# message: 応答メッセージ文字列
+# ------------------------------------------
 module WeatherMethods
   extend ActiveSupport::Concern
 	require 'json'
@@ -11,10 +23,6 @@ module WeatherMethods
 	WEATHER = 'weather'
 	TEMP = 'temp'
 	ERROR_MASSEAGE_WEATHER = "すみません、問題が発生したようです..."
-
-	def self.matching?(message)
-		message.include?('天気') ? true : false
-	end
 
 	def self.exec_command_weather(location, hour) # コマンド要求時の天気情報を取得しメッセージを返す
 		generate_response_message(location, hour)

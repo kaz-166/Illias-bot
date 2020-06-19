@@ -49,19 +49,24 @@ class LinebotController < ApplicationController
 
   private
     def parse_command(event)
-      if GreetingMethods.matching?(event.message['text'])
-        GreetingMethods.exec_command_greeting
-      elsif WeatherMethods.matching?(event.message['text'])
+      params = {}
+      if event.message['text'].include?('おはよう') 
+        params.store('id', '1')
+      elsif (event.message['text'].include?('使い方') || event.message['text'].include?('マニュアル'))
+        params.store('id', '2')
+      elsif event.message['text'].include?('天気')
         location = extract_weather_location_params(event.message['text'])
         hour     = extract_weather_hour_params(event.message['text'])
-        WeatherMethods.exec_command_weather(location, hour)
-      elsif ManualMethods.matching?(event.message['text'])
-        ManualMethods.exec_commamd_manual
+        params.store('id', '3')
+        params.store('location', location)
+        params.store('hour', hour)
       elsif ReminderMethods.matching?(event.message['text'])
-        ReminderMethods.exec_commamd_reminder(event.message['text'])
+        params.store('id', '4')
+        params.store('message', event.message['text'])
       else
-        # コマンド不一致の場合は何も返さない
       end
+
+      MethodSelecter.exec(params)
     end
 
     def extract_weather_hour_params(message)
