@@ -1,8 +1,8 @@
 class OdysseaController < ApplicationController
 	
 	def callback
-		status, reply, expr = MethodSelecter.exec(params)
-		render json: { status: status, message: reply, expression: expr }
+		result = MethodSelecter.exec(params)
+		render json: { status: result['status'], message: result['message'], expression: result['expression'] }
 	end
     
 end
