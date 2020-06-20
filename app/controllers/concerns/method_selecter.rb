@@ -14,6 +14,7 @@ module MethodSelecter
             # 仮実装
             results['status'],  results['message'], results['expression'] = ReminderMethods.exec_commamd_reminder(params['message'])
         else
+            results['status'] = Settings.status.invalid_id
             results['message'] = nil
         end
         results
