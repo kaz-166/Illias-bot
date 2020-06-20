@@ -11,6 +11,7 @@
 # @returns [JSON]
 # status:  処理結果
 # message: 応答メッセージ文字列
+# expression: 表情コード
 # ------------------------------------------
 module GreetingMethods
   extend ActiveSupport::Concern
