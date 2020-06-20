@@ -108,7 +108,7 @@ module WeatherMethods
 			temp    = extract_from_json(TEMP, hour.to_i, response)
 			weather = extract_from_json(WEATHER, hour.to_i, response)
 			
-			return Settings.status.success, "#{hour_message}の#{location_ja}の天気は#{weather}。\n気温は#{temp}℃です。"
+			return Settings.status.success, "#{hour_message}の#{location_ja}の天気は#{weather}。\n気温は#{temp}℃です。", Settings.expression.happy
 		end
 
 		def self.extract_from_json(element, hours, response)
