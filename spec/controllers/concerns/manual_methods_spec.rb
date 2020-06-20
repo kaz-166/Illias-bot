@@ -21,7 +21,7 @@ RSpec.describe OdysseaController, type: :controller do
 				json = JSON.parse(response.body)
 				expect(json['status']).to eq 'SUCCESS'
 			end
-			it "JSON['message']を'適切なメッセージ'にして返す" do
+			it "JSON['message']を適切なメッセージにして返す" do
 				post :callback, body: "{\"id\": \"2\"}", as: :json
 				json = JSON.parse(response.body)
 				expect(json['message']).to include 'ユーザズマニュアルのリンクを貼っておきますね。'
