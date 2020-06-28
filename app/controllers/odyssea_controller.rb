@@ -14,8 +14,11 @@ class OdysseaController < ApplicationController
 	# def manual
 	# end
 
-	# def weather
-	# end
+	def weather
+		result = {'status' => Settings.status.success, 'message' => '', 'expression' => Settings.expression.normal }
+		result['status'],  result['message'], result['expression'] = WeatherMethods.exec_command_weather(params)
+		render json: { status: result['status'], message: result['message'], expression: result['expression'] }
+	end
 
 	# def reminder
 	# end
