@@ -18,7 +18,7 @@ end
 
 RSpec.describe OdysseaController, type: :controller do 
 	describe 'Ilias-Botは' do
-		context 'id=1のJSONをPOSTメソッドで受け取ったとき' do
+		context 'greetingsをGETメソッドで受け取ったとき' do
 			it "リクエストが成功する" do
 				get :greetings
 				expect(response.status).to eq(200)

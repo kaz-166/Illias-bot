@@ -1,9 +1,4 @@
 class OdysseaController < ApplicationController
-	
-	def callback
-		result = MethodSelecter.exec(params)
-		render json: { status: result['status'], message: result['message'], expression: result['expression'] }
-	end
 
 	def greetings
 		result = {'status' => Settings.status.success, 'message' => '', 'expression' => Settings.expression.normal }
@@ -11,8 +6,11 @@ class OdysseaController < ApplicationController
 		render json: { status: result['status'], message: result['message'], expression: result['expression'] }
 	end
 
-	# def manual
-	# end
+	def manual
+		result = {'status' => Settings.status.success, 'message' => '', 'expression' => Settings.expression.normal }
+		result['status'],  result['message'], result['expression'] = ManualMethods.exec_commamd_manual
+		render json: { status: result['status'], message: result['message'], expression: result['expression'] }
+	end
 
 	def weather
 		result = {'status' => Settings.status.success, 'message' => '', 'expression' => Settings.expression.normal }

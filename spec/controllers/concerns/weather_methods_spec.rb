@@ -57,7 +57,7 @@ end
 
 RSpec.describe OdysseaController, type: :controller do 
 	describe 'Ilias-Botは' do
-		context 'id=3, location=nil, hour=nilのJSONをPOSTメソッドで受け取ったとき' do
+		context 'id=3, location=nil, hour=nilのJSONをGETメソッドで受け取ったとき' do
 			it "リクエストが成功する" do
 				get :weather
 				expect(response.status).to eq(200)
@@ -79,7 +79,7 @@ RSpec.describe OdysseaController, type: :controller do
 			end
 		end
 
-		context 'locationが不正なJSONを受け取ったとき' do
+		context 'locationが不正なURLを受け取ったとき' do
 			it "リクエストが成功する" do
 				get :weather, params: {location: 'afehkhdfg', hour: '0'} 
 				expect(response.status).to eq(200)
@@ -101,7 +101,7 @@ RSpec.describe OdysseaController, type: :controller do
 			end
 		end
 		
-		context 'hourが不正なJSONを受け取ったとき' do
+		context 'hourが不正なURLを受け取ったとき' do
 			it "リクエストが成功する" do
 				get :weather, params: {location: 'tokyo', hour: '12'} 
 				expect(response.status).to eq(200)

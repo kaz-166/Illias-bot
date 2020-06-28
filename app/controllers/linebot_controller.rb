@@ -50,23 +50,24 @@ class LinebotController < ApplicationController
   private
     def parse_command(event)
       params = {}
+      results = {'status' => Settings.status.success, 'message' => '', 'expression' => Settings.expression.normal }
       if event.message['text'].include?('おはよう') 
-        params.store('id', '1')
+        results['status'],  results['message'], results['expression'] = GreetingMethods.exec_command_greeting
       elsif (event.message['text'].include?('使い方') || event.message['text'].include?('マニュアル'))
-        params.store('id', '2')
+        results['status'],  results['message'], results['expression'] = ManualMethods.exec_commamd_manual
       elsif event.message['text'].include?('天気')
         location = extract_weather_location_params(event.message['text'])
         hour     = extract_weather_hour_params(event.message['text'])
-        params.store('id', '3')
         params.store('location', location)
         params.store('hour', hour)
+        results['status'],  results['message'], results['expression'] = WeatherMethods.exec_command_weather(params)
       elsif ReminderMethods.matching?(event.message['text'])
-        params.store('id', '4')
         params.store('message', event.message['text'])
+        results['status'],  results['message'], results['expression'] = ReminderMethods.exec_commamd_reminder(params['message'])
       else
+        results['message'] = nil
       end
-
-      MethodSelecter.exec(params)['message']
+      results['message']
     end
 
     def extract_weather_hour_params(message)
