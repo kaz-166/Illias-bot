@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   post '/odyssea'  => 'odyssea#callback'
   get  '/manual'   => 'manual#show'
   get  '/'         => 'manual#show'
+
+  get 'greetings' => 'odyssea#greetings'
 end
