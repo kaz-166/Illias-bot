@@ -58,23 +58,22 @@ end
 RSpec.describe OdysseaController, type: :controller do 
 	describe 'Ilias-Botは' do
 		context 'id=3, location=nil, hour=nilのJSONをPOSTメソッドで受け取ったとき' do
-			# "{\"id\": \"3\", \"location\": \"tokyo\", \"hour\": \"3\"}"
 			it "リクエストが成功する" do
-				post :callback, body: "{\"id\": \"3\"}", as: :json
+				get :weather
 				expect(response.status).to eq(200)
 			end
 			it "JSON['status']を'INVALID PARAMETER'にして返す" do
-				post :callback, body: "{\"id\": \"3\"}", as: :json
+				get :weather
 				json = JSON.parse(response.body)
 				expect(json['status']).to eq Settings.status.invalid_params
 			end
 			it "JSON['message']を適切なメッセージにして返す" do
-				post :callback, body: "{\"id\": \"3\"}", as: :json
+				get :weather
 				json = JSON.parse(response.body)
 				expect(json['message']).to eq 'ん？何かルールを守っていないようですね...？'
 			end
 			it "JSON['expression']を'angry'にして返す" do
-				post :callback, body: "{\"id\": \"3\"}", as: :json
+				get :weather
 				json = JSON.parse(response.body)
 				expect(json['expression']).to eq Settings.expression.angry
 			end
@@ -82,21 +81,21 @@ RSpec.describe OdysseaController, type: :controller do
 
 		context 'locationが不正なJSONを受け取ったとき' do
 			it "リクエストが成功する" do
-				post :callback, body: "{\"id\": \"3\", \"location\": \"afehkhdfg\", \"hour\": \"0\"}", as: :json
+				get :weather, params: {location: 'afehkhdfg', hour: '0'} 
 				expect(response.status).to eq(200)
 			end
 			it "JSON['status']を'INVALID PARAMETER'にして返す" do
-				post :callback, body: "{\"id\": \"3\", \"location\": \"afehkhdfg\", \"hour\": \"0\"}", as: :json
+				get :weather, params: {location: 'afehkhdfg', hour: '0'} 
 				json = JSON.parse(response.body)
 				expect(json['status']).to eq Settings.status.invalid_params
 			end
 			it "JSON['message']を適切なメッセージにして返す" do
-				post :callback, body: "{\"id\": \"3\", \"location\": \"afehkhdfg\", \"hour\": \"0\"}", as: :json
+				get :weather, params: {location: 'afehkhdfg', hour: '0'} 
 				json = JSON.parse(response.body)
 				expect(json['message']).to eq 'そんな地名はありませんよ？'
 			end
 			it "JSON['expression']を'angry'にして返す" do
-				post :callback, body: "{\"id\": \"3\", \"location\": \"afehkhdfg\", \"hour\": \"0\"}", as: :json
+				get :weather, params: {location: 'afehkhdfg', hour: '0'} 
 				json = JSON.parse(response.body)
 				expect(json['expression']).to eq Settings.expression.angry
 			end
@@ -104,21 +103,21 @@ RSpec.describe OdysseaController, type: :controller do
 		
 		context 'hourが不正なJSONを受け取ったとき' do
 			it "リクエストが成功する" do
-				post :callback, body: "{\"id\": \"3\", \"location\": \"tokyo\", \"hour\": \"12\"}", as: :json
+				get :weather, params: {location: 'tokyo', hour: '12'} 
 				expect(response.status).to eq(200)
 			end
 			it "JSON['status']を'INVALID PARAMETER'にして返す" do
-				post :callback, body: "{\"id\": \"3\", \"location\": \"tokyo\", \"hour\": \"12\"}", as: :json
+				get :weather, params: {location: 'tokyo', hour: '12'} 
 				json = JSON.parse(response.body)
 				expect(json['status']).to eq Settings.status.invalid_params
 			end
 			it "JSON['message']を適切なメッセージにして返す" do
-				post :callback, body: "{\"id\": \"3\", \"location\": \"tokyo\", \"hour\": \"12\"}", as: :json
+				get :weather, params: {location: 'tokyo', hour: '12'} 
 				json = JSON.parse(response.body)
 				expect(json['message']).to eq 'その時間までの予測はできないです...'
 			end
 			it "JSON['expression']を'confused'にして返す" do
-				post :callback, body: "{\"id\": \"3\", \"location\": \"tokyo\", \"hour\": \"12\"}", as: :json
+				get :weather, params: {location: 'tokyo', hour: '12'} 
 				json = JSON.parse(response.body)
 				expect(json['expression']).to eq Settings.expression.confused
 			end
