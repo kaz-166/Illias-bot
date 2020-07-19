@@ -28,6 +28,7 @@ module WeatherMethods
 
 	WEATHER = 'weather'
 	TEMP = 'temp'
+	MAX_WEATHER_HOUR = 10
 	ERROR_MASSEAGE_WEATHER = "すみません、問題が発生したようです..."
 
 	def self.exec_command_weather(params) # コマンド要求時の天気情報を取得しメッセージを返す
@@ -135,14 +136,8 @@ module WeatherMethods
 		def self.hour_to_ja(hour)
 			if    hour == 0
 				'現在'
-			elsif hour == 1
-				'1時間後'
-			elsif hour == 2
-				'2時間後'
-			elsif hour == 3
-				'3時間後'
-			elsif hour == 4
-				'4時間後'
+			elsif hour < MAX_WEATHER_HOUR
+				hour.to_s + '時間後'
 			else
 				nil
 			end
