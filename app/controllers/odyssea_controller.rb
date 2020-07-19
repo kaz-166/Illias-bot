@@ -21,5 +21,9 @@ class OdysseaController < ApplicationController
 	# def reminder
 	# end
 
-    
+    def covid19
+		result = {'status' => Settings.status.success, 'message' => '', 'expression' => Settings.expression.normal }
+		result['status'],  result['message'], result['expression'] = Covid19Methods.exec_command_covid19
+		render json: { status: result['status'], message: result['message'], expression: result['expression'] }
+	end
 end

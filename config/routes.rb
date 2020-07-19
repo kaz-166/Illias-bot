@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get 'greetings' => 'odyssea#greetings'
   get 'manual'    => 'odyssea#manual'
   get 'weather'   => 'odyssea#weather'
+  get 'covid19'   => 'odyssea#covid19'
 end

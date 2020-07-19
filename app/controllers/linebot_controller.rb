@@ -64,6 +64,9 @@ class LinebotController < ApplicationController
       elsif ReminderMethods.matching?(event.message['text'])
         params.store('message', event.message['text'])
         results['status'],  results['message'], results['expression'] = ReminderMethods.exec_commamd_reminder(params['message'])
+      elsif event.message['text'].include?('コロナ')
+        # [Todo] 文章を解釈
+        results['status'],  results['message'], results['expression'] = Covid19Methods.exec_command_covid19
       else
         results['message'] = nil
       end
