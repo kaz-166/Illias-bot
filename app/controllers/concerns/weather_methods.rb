@@ -23,7 +23,8 @@ module WeatherMethods
 
 	PUSH_TO_ID = ENV['PUSH_TO_ID']
 	API_KEY  = ENV['OPEN_WEATHER_API_KEY']	# OpenWeatherのAPI_KEYを環境変数にセットすること
-	BASE_URL = "http://api.openweathermap.org/data/2.5/forecast"
+	BASE_URL = "https://api.openweathermap.org/data/2.5/onecall"
+	
 
 	WEATHER = 'weather'
 	TEMP = 'temp'
@@ -39,11 +40,11 @@ module WeatherMethods
 
 	def self.alert # 悪天候の発生をを検知してユーザに通知
 		# TODO: OpenWeatherAPIのコールを2回行っており、冗長。パフォーマンス常の観点から要修正。 
-    cl ||= Line::Bot::Client.new { |config|
-      config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
-      config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
-    }
-    if weather_goes_bad?('Chiba')
+		cl ||= Line::Bot::Client.new { |config|
+		config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
+		config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
+		}
+		if weather_goes_bad?('Chiba')
 			message = {
                 type: 'text',
                 text: "天候が崩れそうですよ。\n外出の際は傘の準備をお忘れなく。"
@@ -55,7 +56,7 @@ module WeatherMethods
 				text: '天候が回復しそうです。'
 			}
 			cl.push_message(PUSH_TO_ID, message)
-    end
+    	end
 	end
 	
 	def self.weather_goes_bad?(location)
@@ -86,8 +87,16 @@ module WeatherMethods
 	
 	private
 		def self.callback_open_weather_map(location) # Web APIを使用して天候情報を取得
-			response = open(BASE_URL + "?q=#{location},jp&APPID=#{API_KEY}")
-			JSON.parse(response.read)
+			geocode = city2geocode(location)
+			response = open(BASE_URL + "?lat=#{geocode['lat']}&lon=#{geocode['lon']}&exclude=minutely,daily&APPID=#{API_KEY}")
+			JSON.parse(response.read)['hourly']
+		end
+
+		# [IN]  city_name: String
+		# [OUT] {lat: float, lng: float}
+		def self.city2geocode(city_name)
+			response = open("https://api.openweathermap.org/data/2.5/weather?q=#{city_name},jp&APPID=#{API_KEY}")
+			JSON.parse(response.read)['coord']
 		end
 
 		def self.generate_response_message(location, hour) # Line Botで返答する文章を生成
@@ -100,7 +109,7 @@ module WeatherMethods
 				return Settings.status.invalid_params, "その時間までの予測はできないです...", Settings.expression.confused
 			end
 			begin
-				response = callback_open_weather_map(location.capitalize)
+				response = callback_open_weather_map(location)
 			rescue
 				return Settings.status.api_callback_error, "天気情報が取得できませんでした。", Settings.expression.confused
 			end
@@ -113,9 +122,9 @@ module WeatherMethods
 
 		def self.extract_from_json(element, hours, response)
 			if element == WEATHER
-				weather_to_ja(response['list'][hours]['weather'][0]['main'])
+				weather_to_ja(response[hours]['weather'][0]['main'])
 			elsif element == TEMP
-				temp = response['list'][hours]['main']['temp']
+				temp = response[hours]['temp']
 				temp = (temp.to_i - 273).to_s	# OpenWeatherAPIでは温度が[K]で取得されるためセルシウス度に変換
 				temp
 			else
