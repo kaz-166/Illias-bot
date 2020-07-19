@@ -45,13 +45,19 @@ module WeatherMethods
 		config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
 		config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
 		}
-		if weather_goes_bad?('Chiba')
+
+		response = callback_open_weather_map('Chiba')
+		# 現在の天候と1時間後の天候を比較し、天候が崩れる場合はTrueを返す
+		weather_now = extract_from_json(WEATHER, 0, response)
+		weather_1h_after = extract_from_json(WEATHER, 1, response)
+
+		if weather_goes_bad?(weather_now, weather_1h_after)
 			message = {
                 type: 'text',
                 text: "天候が崩れそうですよ。\n外出の際は傘の準備をお忘れなく。"
               }
 			cl.push_message(PUSH_TO_ID, message)
-		elsif weather_goes_good?('Chiba')
+		elsif weather_goes_good?(weather_now, weather_1h_after)
 			message = {
 				type: 'text',
 				text: '天候が回復しそうです。'
@@ -60,11 +66,7 @@ module WeatherMethods
     	end
 	end
 	
-	def self.weather_goes_bad?(location)
-		response = callback_open_weather_map(location)
-		# 現在の天候と1時間後の天候を比較し、天候が崩れる場合はTrueを返す
-		weather_now = extract_from_json(WEATHER, 0, response)
-		weather_1h_after = extract_from_json(WEATHER, 1, response)
+	def self.weather_goes_bad?(weather_now, weather_1h_after)
 		if (!(weather_now == '雨') || (weather_now == '雪')) &&
 			 ((weather_1h_after == '雨') || (weather_1h_after == '雪'))
 			true
@@ -73,11 +75,7 @@ module WeatherMethods
 		end
 	end
 
-	def self.weather_goes_good?(location)
-		response = callback_open_weather_map(location)
-		# 現在の天候と1時間後の天候を比較し、天候が崩れる場合はTrueを返す
-		weather_now = extract_from_json(WEATHER, 0, response)
-		weather_1h_after = extract_from_json(WEATHER, 1, response)
+	def self.weather_goes_good?(weather_now, weather_1h_after)
 		if ((weather_now == '雨') || (weather_now == '雪')) &&
 			 (!(weather_1h_after == '雨') || (weather_1h_after == '雪'))
 			true
